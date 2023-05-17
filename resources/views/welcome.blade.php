@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../../../css/styles.css" rel="stylesheet" />
+        <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -52,7 +52,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="welcome">Home</a></li>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="./">Home</a></li>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="about">About</a></li>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products">Products</a></li>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store">Store</a></li>
@@ -63,7 +63,7 @@
             <section class="page-section clearfix">
                 <div class="container">
                     <div class="intro">
-                        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg" alt="..." />
+                        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{asset('img/intro.jpg')}}" alt="..." />
                         <div class="intro-text left-0 text-center bg-faded p-5 rounded">
                             <h2 class="section-heading mb-4">
                                 <span class="section-heading-upper">Fresh Coffee</span>
@@ -96,6 +96,6 @@
             <!-- Bootstrap core JS-->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
             <!-- Core theme JS-->
-            <script src="../../../js/scripts.js"></script>
+            <script src="{{asset('js/scripts.js')}}"></script>
     </body>
 </html>
