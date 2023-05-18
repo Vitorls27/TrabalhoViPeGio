@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Funcionario extends Controller
+class EstoqueController extends Controller
 {
     //
 }

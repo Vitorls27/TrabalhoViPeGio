@@ -33,6 +33,12 @@ Route::get('/dashboard', function () {
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::get('/estoque', function () {
+    return view('estoque');
+})
+    ->middleware(['auth', 'verified'])
+    ->name('estoque');
+
 Route::middleware('auth')->group(function () {
     Route::resource('usuario', UsuarioController::class);
     Route::post('usuario/search', [UsuarioController::class, 'search']);
