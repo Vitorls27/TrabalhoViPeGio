@@ -11,6 +11,6 @@ class Funcionario extends Model
     protected $table = "funcionario";
 
     protected $fillable = [
-        'nome', 'telefone', 'email', 'imagem'
+        'nome', 'telefone', 'email', 'setor_id', 'imagem'
     ];
 }
