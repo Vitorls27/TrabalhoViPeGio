@@ -18,30 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/store', function () {
-    return view('store');
-});
-Route::get('/products', function () {
-    return view('products');
-});
+
 Route::get('/dashboard', function () {
     return view('base.dashboard');
 })
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('/estoque', function () {
-    return view('estoque');
-})
-    ->middleware(['auth', 'verified'])
-    ->name('estoque');
-
 Route::middleware('auth')->group(function () {
     Route::resource('usuario', UsuarioController::class);
-    Route::post('usuario/search', [UsuarioController::class, 'search']);
+    Route::post('usuario/search', [UsuarioController::class, 'search'])->name(
+        'usuario.search'
+    );
     Route::get('/profile', [ProfileController::class, 'edit'])->name(
         'profile.edit'
     );
