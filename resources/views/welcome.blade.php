@@ -27,29 +27,24 @@
     </head>
     <body class="antialiased">
         <header>
-                <h1 class="site-heading text-center text-faded d-none d-lg-block">
-                    <span class="site-heading-upper text-primary mb-3">A Free Bootstrap Business Theme</span>
-                    <span class="site-heading-lower">Business Casual</span>
-                </h1>
-                @if (Route::has('login'))
-            <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-                @if (Route::has('login'))
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+                <span class="site-heading-upper text-primary mb-3">A Free Bootstrap Business Theme</span>
+                <span class="site-heading-lower">Business Casual</span>
+            </h1>
+            @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-400 dark:text-gray-400 underline">Painel</a>
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-400 dark:text-gray-400 underline">Painel</a>
                     @else
-                    <a href="{{ route('login') }}" class="text-lg text-gray-400 dark:text-gray-400">Entrar</a>
-
+                        <a href="{{ route('login') }}" class="text-lg text-gray-400 dark:text-gray-400">Entrar</a>
                         @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-lg text-gray-400 dark:text-gray-400">Cadastrar</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-lg text-gray-400 dark:text-gray-400">Cadastrar</a>
                         @endif
                     @endauth
                 </div>
-                @endif
-            </div>
+            @endif
         </header>
-
-            <!-- Navigation-->
+             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
                 <div class="container">
                     <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Start Bootstrap</a>
