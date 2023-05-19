@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Funcionario;
+use App\Models\Categoria;
 
 class FuncionarioController extends Controller
 {
@@ -11,7 +13,7 @@ class FuncionarioController extends Controller
         $funcionarios = Funcionario::All();
         // dd($funcionarios);
 
-        return view('FuncionarioList')->with(['funcionarios' => $usuarios]);
+        return view('FuncionarioList')->with(['funcionarios' => $funcionarios]);
     }
 
     function create()
@@ -28,7 +30,6 @@ class FuncionarioController extends Controller
                 'nome' => 'required | max: 120',
                 'telefone' => 'required | max: 20',
                 'email' => ' nullable | email | max: 100',
-                'categoria_id' => ' nullable',
                 'imagem' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
             [
@@ -52,7 +53,7 @@ class FuncionarioController extends Controller
         }
 
         //dd( $request->nome);
-        Usuario::create([
+        Funcionario::create([
             'nome' => $request->nome,
             'telefone' => $request->telefone,
             'email' => $request->email,
@@ -61,32 +62,32 @@ class FuncionarioController extends Controller
         ]);
 
         return \redirect()->action(
-            'App\Http\Controllers\UsuarioController@index'
+            'App\Http\Controllers\FuncionarioController@index'
         );
     }
 
     function edit($id)
     {
-        //select * from usuario where id = $id;
-        $usuario = Usuario::findOrFail($id);
-        //dd($usuario);
+        //select * from Funcionario where id = $id;
+        $funcionario = Funcionario::findOrFail($id);
+        //dd($Funcionario);
         $categorias = Categoria::orderBy('nome')->get();
 
-        return view('UsuarioForm')->with([
-            'usuario' => $usuario,
+        return view('FuncionarioForm')->with([
+            'Funcionario' => $funcionario,
             'categorias' => $categorias,
         ]);
     }
 
     function show($id)
     {
-        //select * from usuario where id = $id;
-        $usuario = Usuario::findOrFail($id);
+        //select * from funcionario where id = $id;
+        $funcionario = Funcionario::findOrFail($id);
         //dd($usuario);
         $categorias = Categoria::orderBy('nome')->get();
 
-        return view('UsuarioForm')->with([
-            'usuario' => $usuario,
+        return view('FuncionarioForm')->with([
+            'funcionario' => $funcionario,
             'categorias' => $categorias,
         ]);
     }
@@ -99,7 +100,6 @@ class FuncionarioController extends Controller
                 'nome' => 'required | max: 120',
                 'telefone' => 'required | max: 20',
                 'email' => ' nullable | email | max: 100',
-                'categoria_id' => ' nullable',
                 'imagem' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
             [
@@ -122,47 +122,46 @@ class FuncionarioController extends Controller
             $nome_arquivo = $diretorio . $nome_arquivo;
         }
 
-        Usuario::updateOrCreate(
+        Funcionario::updateOrCreate(
             ['id' => $request->id],
             [
                 'nome' => $request->nome,
                 'telefone' => $request->telefone,
                 'email' => $request->email,
-                'categoria_id' => $request->categoria_id,
                 'imagem' => $nome_arquivo,
             ]
         );
 
         return \redirect()->action(
-            'App\Http\Controllers\UsuarioController@index'
+            'App\Http\Controllers\funcionarioController@index'
         );
     }
     //
 
     function destroy($id)
     {
-        $usuario = Usuario::findOrFail($id);
+        $funcionario = Funcionario::findOrFail($id);
 
-        $usuario->delete();
+        $funcionario->delete();
 
         return \redirect()->action(
-            'App\Http\Controllers\UsuarioController@index'
+            'App\Http\Controllers\funcionarioController@index'
         );
     }
 
     function search(Request $request)
     {
         if ($request->campo == 'nome') {
-            $usuarios = Usuario::where(
+            $funcionarios = Funcionario::where(
                 'nome',
                 'like',
                 '%' . $request->valor . '%'
             )->get();
         } else {
-            $usuarios = Usuario::all();
+            $funcionarios = Funcionario::all();
         }
 
-        //dd($usuarios);
-        return view('UsuarioList')->with(['usuarios' => $usuarios]);
+        //dd($funcionarios);
+        return view('funcionarioList')->with(['funcionarios' => $funcionarios]);
     }
 }

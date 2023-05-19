@@ -31,7 +31,7 @@
                     <button class="btn btn-primary" type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i> Buscar
                     </button>
-                    <a class="btn btn-success" href='{{ action('App\Http\Controllers\UsuarioController@create') }}'><i
+                    <a class="btn btn-success" href="{{ action('App\Http\Controllers\UsuarioController@create') }}"><i
                             class="fa-solid fa-plus"></i> Cadastrar</a>
                 </div>
             </div>
