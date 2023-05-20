@@ -150,11 +150,10 @@ class UsuarioController extends Controller
         $usuario = Usuario::findOrFail($id);
 
         // verifica se existe o arquivo vinculado ao registro e depois remove
-        if (Storage::disk('public')->exists($usuario->imagem)) {
+       if ($usuario->imagem){
             Storage::disk('public')->delete($usuario->imagem);
         }
         $usuario->delete();
-
         return \redirect('usuario')->with('success', 'Removido com sucesso!');
     }
 
