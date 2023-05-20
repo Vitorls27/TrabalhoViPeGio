@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Funcionario;
 use App\Models\Categoria;
+use App\Models\Setor;
 
 class FuncionarioController extends Controller
 {
@@ -18,9 +19,9 @@ class FuncionarioController extends Controller
 
     function create()
     {
-        $categorias = Categoria::orderBy('nome')->get();
+        $setores = Setor::orderBy('nome')->get();
 
-        return view('FuncionarioForm')->with(['categorias' => $categorias]);
+        return view('FuncionarioForm')->with(['setores' => $setores]);
     }
 
     function store(Request $request)
@@ -30,7 +31,8 @@ class FuncionarioController extends Controller
                 'nome' => 'required | max: 120',
                 'telefone' => 'required | max: 20',
                 'email' => ' nullable | email | max: 100',
-                'imagem' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
+                'setor_id' => 'nullable',
+                'imgfun' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
@@ -41,14 +43,14 @@ class FuncionarioController extends Controller
             ]
         );
 
-        $imagem = $request->file('imagem');
+        $imgfun = $request->file('imgfun');
         $nome_arquivo = '';
-        if ($imagem) {
+        if ($imgfun) {
             $nome_arquivo =
-                date('YmdHis') . '.' . $imagem->getClientOriginalExtension();
+                date('YmdHis') . '.' . $imgfun->getClientOriginalExtension();
 
             $diretorio = 'imagem/';
-            $imagem->storeAs($diretorio, $nome_arquivo, 'public');
+            $imgfun->storeAs($diretorio, $nome_arquivo, 'public');
             $nome_arquivo = $diretorio . $nome_arquivo;
         }
 
@@ -57,8 +59,8 @@ class FuncionarioController extends Controller
             'nome' => $request->nome,
             'telefone' => $request->telefone,
             'email' => $request->email,
-            'categoria_id' => $request->categoria_id,
-            'imagem' => $nome_arquivo,
+            'setor_id' => $request->setor_id,
+            'imgfun' => $nome_arquivo,
         ]);
 
         return \redirect()->action(
@@ -71,11 +73,11 @@ class FuncionarioController extends Controller
         //select * from Funcionario where id = $id;
         $funcionario = Funcionario::findOrFail($id);
         //dd($Funcionario);
-        $categorias = Categoria::orderBy('nome')->get();
+        $setores = Setor::orderBy('nome')->get();
 
         return view('FuncionarioForm')->with([
             'Funcionario' => $funcionario,
-            'categorias' => $categorias,
+            'setores' => $setores,
         ]);
     }
 
@@ -84,11 +86,11 @@ class FuncionarioController extends Controller
         //select * from funcionario where id = $id;
         $funcionario = Funcionario::findOrFail($id);
         //dd($usuario);
-        $categorias = Categoria::orderBy('nome')->get();
+        $setores = Setor::orderBy('nome')->get();
 
         return view('FuncionarioForm')->with([
             'funcionario' => $funcionario,
-            'categorias' => $categorias,
+            'setores' => $setores,
         ]);
     }
 
@@ -100,7 +102,8 @@ class FuncionarioController extends Controller
                 'nome' => 'required | max: 120',
                 'telefone' => 'required | max: 20',
                 'email' => ' nullable | email | max: 100',
-                'imagem' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
+                'setor_id' => 'nullable',
+                'imgfun' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
@@ -111,30 +114,32 @@ class FuncionarioController extends Controller
             ]
         );
 
-        $imagem = $request->file('imagem');
-        $nome_arquivo = '';
-        if ($imagem) {
-            $nome_arquivo =
-                date('YmdHis') . '.' . $imagem->getClientOriginalExtension();
+        $dados =  [
+            'nome' => $request->nome,
+            'telefone' => $request->telefone,
+            'email' => $request->email,
+            'setor_id' => $request->setor_id,
+        ];
+
+        $imgfun = $request->file('imgfun');
+        //verifica se o campo imagem foi passado uma imagem
+        if ($imgfun) {
+            $nome_arquivo = date('YmdHis') . '.' . $imgfun->getClientOriginalExtension();
 
             $diretorio = 'imagem/';
-            $imagem->storeAs($diretorio, $nome_arquivo, 'public');
-            $nome_arquivo = $diretorio . $nome_arquivo;
+            //salva a imagem em uma pasta
+            $imgfun->storeAs($diretorio, $nome_arquivo, 'public');
+            //adiciona ao vetor o diretorio do arquivo e o nome
+            $dados['imgfun'] = $diretorio . $nome_arquivo;
         }
 
+        //metodo para atualizar passando o vetor com os dados do form e o id
         Funcionario::updateOrCreate(
             ['id' => $request->id],
-            [
-                'nome' => $request->nome,
-                'telefone' => $request->telefone,
-                'email' => $request->email,
-                'imagem' => $nome_arquivo,
-            ]
+            $dados
         );
 
-        return \redirect()->action(
-            'App\Http\Controllers\funcionarioController@index'
-        );
+        return \redirect('funcionario')->with('success', 'Atualizado com sucesso!');
     }
     //
 
