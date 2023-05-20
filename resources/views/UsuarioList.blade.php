@@ -51,8 +51,7 @@
                 <td><a href="{{ action('App\Http\Controllers\UsuarioController@edit', $item->id) }}"><i
                             class='fa-solid fa-pen-to-square' style='color:orange;'></i></a></td>
                 <td>
-                    <form method="POST"
-                        action="{{ action('App\Http\Controllers\UsuarioController@destroy', $item->id) }}">
+                    <form method="POST" action="{{ action('App\Http\Controllers\UsuarioController@destroy', $item->id) }}">
                         <input type="hidden" name="_method" value="DELETE">
                         @csrf
                         <button type="submit" onclick='return confirm("Deseja Excluir?")' style='all: unset;'><i
