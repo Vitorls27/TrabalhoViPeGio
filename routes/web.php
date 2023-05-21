@@ -48,53 +48,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name(
         'profile.destroy'
     );
-});
-
-Route::middleware('auth')->group(function () {
     Route::resource('estoque', EstoqueController::class);
     Route::post('estoque/search', [EstoqueController::class, 'search'])->name(
         'estoque.search'
     );
-    Route::get('/profile', [ProfileController::class, 'edit'])->name(
-        'profile.edit'
-    );
-    Route::patch('/profile', [ProfileController::class, 'update'])->name(
-        'profile.update'
-    );
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name(
-        'profile.destroy'
-    );
-});
-
-Route::middleware('auth')->group(function () {
     Route::resource('funcionario', FuncionarioController::class);
     Route::post('funcionario/search', [FuncionarioController::class, 'search'])->name(
         'funcionario.search'
     );
-    Route::get('/profile', [ProfileController::class, 'edit'])->name(
-        'profile.edit'
-    );
-    Route::patch('/profile', [ProfileController::class, 'update'])->name(
-        'profile.update'
-    );
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name(
-        'profile.destroy'
-    );
-});
-
-Route::middleware('auth')->group(function () {
     Route::resource('cardapio', CardapioController::class);
     Route::post('cardapio/search', [CardapioController::class, 'search'])->name(
         'cardapio.search'
-    );
-    Route::get('/profile', [ProfileController::class, 'edit'])->name(
-        'profile.edit'
-    );
-    Route::patch('/profile', [ProfileController::class, 'update'])->name(
-        'profile.update'
-    );
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name(
-        'profile.destroy'
     );
 });
 

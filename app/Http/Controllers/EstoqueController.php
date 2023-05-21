@@ -28,38 +28,30 @@ class EstoqueController extends Controller
         $request->validate(
             [
                 'nome' => 'required | max: 120',
-                'telefone' => 'required | max: 20',
-                'email' => ' nullable | email | max: 100',
+                'peso' => 'required | max: 10',
+                'valor' => ' required | max: 8',
                 'tipo_id' => ' nullable',
-                'imagem' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
+                'quantidade' => ' required | max: 6',
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
                 'nome.max' => 'Só é permitido 120 caracteres',
-                'telefone.required' => 'O telefone é obrigatório',
-                'telefone.max' => 'Só é permitido 20 caracteres',
-                'email.max' => 'Só é permitido 100 caracteres',
+                'peso.required' => 'O peso é obrigatório',
+                'peso.max' => 'Só é permitido 10 caracteres',
+                'valor.required' => 'O valor é obrigatório',
+                'valor.max' => 'Só é permitido 8 caracteres',
+                'quantidade.required' => 'O quantidade é obrigatório',
+                'quantidade.max' => 'Só é permitido 6 caracteres',
             ]
         );
-
-        $imagem = $request->file('imagem');
-        $nome_arquivo = '';
-        if ($imagem) {
-            $nome_arquivo =
-                date('YmdHis') . '.' . $imagem->getClientOriginalExtension();
-
-            $diretorio = 'imagem/';
-            $imagem->storeAs($diretorio, $nome_arquivo, 'public');
-            $nome_arquivo = $diretorio . $nome_arquivo;
-        }
 
         //dd( $request->nome);
         Estoque::create([
             'nome' => $request->nome,
-            'telefone' => $request->telefone,
-            'email' => $request->email,
+            'peso' => $request->peso,
+            'valor' => $request->valor,
             'tipo_id' => $request->tipo_id,
-            'imagem' => $nome_arquivo,
+            'quantidade' => $request->quantidade,
         ]);
 
         return \redirect()->action(
@@ -99,41 +91,30 @@ class EstoqueController extends Controller
         $request->validate(
             [
                 'nome' => 'required | max: 120',
-                'telefone' => 'required | max: 20',
-                'email' => ' nullable | email | max: 100',
+                'peso' => 'required | max: 10',
+                'valor' => ' required | max: 8',
                 'tipo_id' => ' nullable',
-                'imagem' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
+                'quantidade' => ' required | max: 6',
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
                 'nome.max' => 'Só é permitido 120 caracteres',
-                'telefone.required' => 'O telefone é obrigatório',
-                'telefone.max' => 'Só é permitido 20 caracteres',
-                'email.max' => 'Só é permitido 100 caracteres',
+                'peso.required' => 'O peso é obrigatório',
+                'peso.max' => 'Só é permitido 10 caracteres',
+                'valor.required' => 'O valor é obrigatório',
+                'valor.max' => 'Só é permitido 8 caracteres',
+                'quantidade.required' => 'O quantidade é obrigatório',
+                'quantidade.max' => 'Só é permitido 6 caracteres',
             ]
         );
 
-        $imagem = $request->file('imagem');
-        $nome_arquivo = '';
-        if ($imagem) {
-            $nome_arquivo =
-                date('YmdHis') . '.' . $imagem->getClientOriginalExtension();
-
-            $diretorio = 'imagem/';
-            $imagem->storeAs($diretorio, $nome_arquivo, 'public');
-            $nome_arquivo = $diretorio . $nome_arquivo;
-        }
-
-        Estoque::updateOrCreate(
-            ['id' => $request->id],
-            [
-                'nome' => $request->nome,
-                'telefone' => $request->telefone,
-                'email' => $request->email,
-                'tipo_id' => $request->tipo_id,
-                'imagem' => $nome_arquivo,
-            ]
-        );
+        Estoque::create([
+            'nome' => $request->nome,
+            'peso' => $request->peso,
+            'valor' => $request->valor,
+            'tipo_id' => $request->tipo_id,
+            'quantidade' => $request->quantidade,
+        ]);
 
         return \redirect()->action(
             'App\Http\Controllers\EstoqueController@index'
@@ -155,16 +136,16 @@ class EstoqueController extends Controller
     function search(Request $request)
     {
         if ($request->campo == 'nome') {
-            $estoques = Estoque::where(
+            $estoque = Estoque::where(
                 'nome',
                 'like',
                 '%' . $request->valor . '%'
             )->get();
         } else {
-            $estoques = Estoque::all();
+            $estoque = Estoque::all();
         }
 
         //dd($estoques);
-        return view('EstoqueList')->with(['estoques' => $estoques]);
+        return view('EstoqueList')->with(['estoque' => $estoque]);
     }
 }

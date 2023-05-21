@@ -56,7 +56,7 @@
                     <form method="POST" action="{{ action('App\Http\Controllers\FuncionarioController@destroy', $item->id) }}">
                         <input type="hidden" name="_method" value="DELETE">
                         @csrf
-                        <button type="submit" onclick='return confirm("Deseja Excluir?")' style='all: unset;'><i
+                        <button type="submit" onclick='return confirm("Deseja Excluir?")' style='all: unset; cursor:pointer;'><i
                                 class='fa-solid fa-trash' style='color:red;'></i>
                         </button>
                     </form>

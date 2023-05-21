@@ -39,19 +39,21 @@
             <div class="col-3">
                 <label class="form-label">Setor</label><br>
                 <select name="setor_id" class="form-select">
-                    @foreach ($setor as $item)
-                        <option value="{{ $item->id }}">{{ $item->nome }}</option>
-                    @endforeach
+                    <option value="atendente">Atendente</option>
+                    <option value="garçom">Garçom</option>
+                    <option value="estoque">Estoque</option>
+                    <option value="administraçao">Administração</option>
+                    <option value="cozinha">Cozinha</option>
                 </select>
             </div>
             @php
-                $nome_imagem = !empty($funcionario->imagem) ? $funcionario->imagem : 'sem_imagem.jpg';
+                $nome_imagem = !empty($funcionario->imgfun) ? $funcionario->imgfun : 'sem_imagem.jpg';
             @endphp
             <div class="col-6">
                 <br>
                 <img class="img-thumbnail" src="/storage/{{ $nome_imagem }}" width="300px" />
                 <br><br>
-                <input type="file" class="form-control" name="imagem" /><br>
+                <input type="file" class="form-control" name="imgfun" /><br>
             </div>
             <button class="btn btn-success" type="submit">
                 <i class="fa-solid fa-save"></i> Salvar

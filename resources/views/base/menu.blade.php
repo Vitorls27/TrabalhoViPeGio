@@ -19,15 +19,6 @@
                             <li><a class="dropdown-item" href="{{ url('/cardapio') }}">Cardápio</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Item 01</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Item 01</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Item 03</a>
-                    </li>
                 </ul>
             </div>
             <div style="margin-right: 50px;">

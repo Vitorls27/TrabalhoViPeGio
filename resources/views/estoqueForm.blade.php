@@ -52,7 +52,7 @@
                     value="@if (!empty(old('peso'))) {{ old('peso') }} @elseif(!empty($estoque->peso)) {{ $estoque->peso }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
-                <label class="form-label">Valor por Uni.</label><br>
+                <label class="form-label">Valor(R$) por Uni.</label><br>
                 <input type="valor" class="form-control" name="valor"
                     value="@if (!empty(old('valor'))) {{ old('valor') }} @elseif(!empty($estoque->valor)) {{ $estoque->email }} @else {{ '' }} @endif" /><br>
             </div>
@@ -72,7 +72,7 @@
             <button class="btn btn-success" type="submit">
                 <i class="fa-solid fa-save"></i> Salvar
             </button>
-            <a href='{{ route('estoque.index') }}' class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i>
+            <a href="{{ route('estoque.index') }}" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i>
                 Voltar</a>
         </form>
     </div>

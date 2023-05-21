@@ -31,7 +31,7 @@
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
             <p class="text-center text-muted">© {{ date('Y') }} Desenvolvido por: <a href="#"
-                    target="_blank">Seu nome</a></p>
+                    target="_blank">Vitor Luiz de Souza</a></p>
             </p>
         </div>
     </footer>

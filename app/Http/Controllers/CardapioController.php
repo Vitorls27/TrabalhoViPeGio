@@ -29,6 +29,7 @@ class CardapioController extends Controller
             [
                 'nome' => 'required | max: 120',
                 'custo' => 'required | max: 10',
+                'descriçao' => 'nullable',
                 'imgprod' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
             [
@@ -39,14 +40,14 @@ class CardapioController extends Controller
             ]
         );
 
-        $imagem = $request->file('imgprod');
+        $imgprod = $request->file('imgprod');
         $nome_arquivo = '';
-        if ($imagem) {
+        if ($imgprod) {
             $nome_arquivo =
-                date('YmdHis') . '.' . $imagem->getClientOriginalExtension();
+                date('YmdHis') . '.' . $imgprod->getClientOriginalExtension();
 
             $diretorio = 'imagem/';
-            $imagem->storeAs($diretorio, $nome_arquivo, 'public');
+            $imgprod->storeAs($diretorio, $nome_arquivo, 'public');
             $nome_arquivo = $diretorio . $nome_arquivo;
         }
 
@@ -54,7 +55,8 @@ class CardapioController extends Controller
         Cardapio::create([
             'nome' => $request->nome,
             'custo' => $request->custo,
-            'imagem' => $nome_arquivo,
+            'descriçao' => $request->descriçao,
+            'imgprod' => $nome_arquivo,
         ]);
 
         return \redirect()->action(
@@ -95,7 +97,8 @@ class CardapioController extends Controller
             [
                 'nome' => 'required | max: 120',
                 'custo' => 'required | max: 10',
-                'imagem' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
+                'descriçao' => 'nullable',
+                'imgprod' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
@@ -105,14 +108,14 @@ class CardapioController extends Controller
             ]
         );
 
-        $imagem = $request->file('imgprod');
+        $imgprod = $request->file('imgprod');
         $nome_arquivo = '';
-        if ($imagem) {
+        if ($imgprod) {
             $nome_arquivo =
-                date('YmdHis') . '.' . $imagem->getClientOriginalExtension();
+                date('YmdHis') . '.' . $imgprod->getClientOriginalExtension();
 
             $diretorio = 'imagem/';
-            $imagem->storeAs($diretorio, $nome_arquivo, 'public');
+            $imgprod->storeAs($diretorio, $nome_arquivo, 'public');
             $nome_arquivo = $diretorio . $nome_arquivo;
         }
 
@@ -121,6 +124,7 @@ class CardapioController extends Controller
             [
                 'nome' => $request->nome,
                 'custo' => $request->custo,
+                'descriçao' => $request->descriçao,
                 'imgprod' => $nome_arquivo,
             ]
         );
