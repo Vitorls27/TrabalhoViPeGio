@@ -13,7 +13,7 @@ class EstoqueController extends Controller
         $estoque = Estoque::All();
         // dd($estoques);
 
-        return view('EstoqueList')->with(['estoques' => $estoque]);
+        return view('EstoqueList')->with(['estoque' => $estoque]);
     }
 
     function create()

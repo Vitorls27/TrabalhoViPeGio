@@ -39,11 +39,11 @@
             <div class="col-3">
                 <label class="form-label">Setor</label><br>
                 <select name="setor_id" class="form-select">
-                    <option value="atendente">Atendente</option>
-                    <option value="garçom">Garçom</option>
-                    <option value="estoque">Estoque</option>
-                    <option value="administraçao">Administração</option>
-                    <option value="cozinha">Cozinha</option>
+                    <option value="1">Atendente</option>
+                    <option value="2">Garçom</option>
+                    <option value="3">Estoque</option>
+                    <option value="4">Administração</option>
+                    <option value="5">Cozinha</option>
                 </select>
             </div>
             @php

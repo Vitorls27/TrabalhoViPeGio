@@ -18,9 +18,9 @@ class FuncionarioController extends Controller
 
     function create()
     {
-        $setors = Setor::orderBy('nome')->get();
+        $setor = Setor::orderBy('nome')->get();
 
-        return view('FuncionarioForm')->with(['setores' => $setors]);
+        return view('FuncionarioForm')->with(['setor' => $setor]);
     }
 
     function store(Request $request)
@@ -72,11 +72,11 @@ class FuncionarioController extends Controller
         //select * from Funcionario where id = $id;
         $funcionario = Funcionario::findOrFail($id);
         //dd($Funcionario);
-        $setors = Setor::orderBy('nome')->get();
+        $setor = Setor::orderBy('nome')->get();
 
         return view('FuncionarioForm')->with([
             'Funcionario' => $funcionario,
-            'setors' => $setors,
+            'setor' => $setor,
         ]);
     }
 
@@ -85,11 +85,11 @@ class FuncionarioController extends Controller
         //select * from funcionario where id = $id;
         $funcionario = Funcionario::findOrFail($id);
         //dd($usuario);
-        $setors = Setor::orderBy('nome')->get();
+        $setor = Setor::orderBy('nome')->get();
 
         return view('FuncionarioForm')->with([
             'funcionario' => $funcionario,
-            'setors' => $setors,
+            'setor' => $setor,
         ]);
     }
 

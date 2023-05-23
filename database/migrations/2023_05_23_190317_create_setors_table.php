@@ -13,16 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('funcionario', function (Blueprint $table) {
+        Schema::create('setor', function (Blueprint $table) {
             $table->id();
-            $table->string('nome',120);
-            $table->string('telefone',20);
-            $table->string('email',100);
-            $table->string('imgfun',150)->nullable();
+            $table->string('nome',100);
             $table->timestamps();
         });
-    }
 
+        Schema::disableForeignKeyConstraints();
+
+        Schema::table('funcionario', function (Blueprint $table) {
+            $table->foreignId('setor_id')->nullable()->constrained('setor')->default(null);
+
+        });
+
+        Schema::enableForeignKeyConstraints();
+    }
     /**
      * Reverse the migrations.
      *
@@ -30,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funcionario');
+        Schema::dropIfExists('setor');
     }
 };

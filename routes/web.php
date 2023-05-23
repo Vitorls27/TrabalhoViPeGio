@@ -30,6 +30,10 @@ Route::get('/store', function () {
 Route::get('/products', function () {
     return view('products');
 });
+Route::resource('cardapio', CardapioController::class);
+    Route::get('cardapio/search', [CardapioController::class, 'search'])->name(
+        'cardapio.search'
+    );
 
 Route::get('/dashboard', function () {
     return view('base.dashboard');
@@ -58,10 +62,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('funcionario', FuncionarioController::class);
     Route::post('funcionario/search', [FuncionarioController::class, 'search'])->name(
         'funcionario.search'
-    );
-    Route::resource('cardapio', CardapioController::class);
-    Route::post('cardapio/search', [CardapioController::class, 'search'])->name(
-        'cardapio.search'
     );
 });
 
