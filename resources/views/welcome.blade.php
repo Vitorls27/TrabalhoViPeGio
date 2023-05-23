@@ -28,8 +28,8 @@
     <body class="antialiased">
         <header>
             <h1 class="site-heading text-center text-faded d-none d-lg-block">
-                <span class="site-heading-upper text-primary mb-3">A Free Bootstrap Business Theme</span>
-                <span class="site-heading-lower">Business Casual</span>
+                <span class="site-heading-upper text-primary mb-3">CAFETERIA VIP CHAPECÓ</span>
+                <span class="site-heading-lower">O VERDADEIRO CAFÉ</span>
             </h1>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -47,14 +47,14 @@
              <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
                 <div class="container">
-                    <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Start Bootstrap</a>
+                    <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Cafeteria VipeGio</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="./">Home</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="about">About</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products">Products</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store">Store</a></li>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="./">Início</a></li>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="about">Sobre nós</a></li>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products">Produtos</a></li>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store">Cardápio</a></li>
                         </ul>
                     </div>
                 </div>
@@ -65,11 +65,11 @@
                         <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{asset('img/intro.jpg')}}" alt="..." />
                         <div class="intro-text left-0 text-center bg-faded p-5 rounded">
                             <h2 class="section-heading mb-4">
-                                <span class="section-heading-upper">Fresh Coffee</span>
-                                <span class="section-heading-lower">Worth Drinking</span>
+                                <span class="section-heading-upper">COMECE SEU DIA</span>
+                                <span class="section-heading-lower">MAIS FELIZ</span>
                             </h2>
-                            <p class="mb-3">Every cup of our quality artisan coffee starts with locally sourced, hand picked ingredients. Once you try it, our coffee will be a blissful addition to your everyday morning routine - we guarantee it!</p>
-                            <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="#!">Visit Us Today!</a></div>
+                            <p class="mb-3">Com certeza nosso café vai deixar seu dia muito melhor! Comece o dia com café! Aroma fresco, com sabor da manhã. Isso sim, podemos chamar de um dia bem humorado. </p>
+                            <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="#!">Abrimos as 6:00</a></div>
                         </div>
                     </div>
                 </div>
@@ -80,18 +80,18 @@
                         <div class="col-xl-9 mx-auto">
                             <div class="cta-inner bg-faded text-center rounded">
                                 <h2 class="section-heading mb-4">
-                                    <span class="section-heading-upper">Our Promise</span>
-                                    <span class="section-heading-lower">To You</span>
+                                    <span class="section-heading-upper">por que devo</span>
+                                    <span class="section-heading-lower">escolher a VIP?</span>
                                 </h2>
-                                <p class="mb-0">When you walk into our shop to start your day, we are dedicated to providing you with friendly service, a welcoming atmosphere, and above all else, excellent products made with the highest quality ingredients. If you are not satisfied, please let us know and we will do whatever we can to make things right!</p>
+                                <p class="mb-0">Quando você é recebido pela manhã bem cedo, com um sorriso no rosto, cheirinho de café e opções saudáveis de desejejum, aí sim, seu dia estará pronto para começar. A VIP Cafeteria com certeza vai surpreender seu paladar e te preparar para um dia muito produtivo. Nosso café é espetacular. Só quem provou, sabe!</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-        <footer class="footer text-faded text-center py-5">
-            <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2023</p></div>
-        </footer>
+            <footer class="footer text-faded text-center py-5">
+                <div class="container"><p class="m-0 small">Equipe &copy; Giordano Parisotto, Pedro Henrique Prola e Vitor de Souza</div>
+            </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
