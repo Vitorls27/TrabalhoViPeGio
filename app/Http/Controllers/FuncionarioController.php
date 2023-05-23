@@ -142,15 +142,12 @@ class FuncionarioController extends Controller
     }
     //
 
-    function destroy($id)
-    {
+    function destroy($id){
         $funcionario = Funcionario::findOrFail($id);
 
+        // verifica se existe o arquivo vinculado ao registro e depois remove
         $funcionario->delete();
-
-        return \redirect()->action(
-            'App\Http\Controllers\funcionarioController@index'
-        );
+        return \redirect('funcionario')->with('success', 'Removido com sucesso!');
     }
 
     function search(Request $request)
