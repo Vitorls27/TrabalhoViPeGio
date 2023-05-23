@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Funcionario;
-use App\Models\Categoria;
 use App\Models\Setor;
 
 class FuncionarioController extends Controller
@@ -19,9 +18,9 @@ class FuncionarioController extends Controller
 
     function create()
     {
-        $setores = Setor::orderBy('nome')->get();
+        $setors = Setor::orderBy('nome')->get();
 
-        return view('FuncionarioForm')->with(['setores' => $setores]);
+        return view('FuncionarioForm')->with(['setores' => $setors]);
     }
 
     function store(Request $request)
@@ -73,11 +72,11 @@ class FuncionarioController extends Controller
         //select * from Funcionario where id = $id;
         $funcionario = Funcionario::findOrFail($id);
         //dd($Funcionario);
-        $setores = Setor::orderBy('nome')->get();
+        $setors = Setor::orderBy('nome')->get();
 
         return view('FuncionarioForm')->with([
             'Funcionario' => $funcionario,
-            'setores' => $setores,
+            'setors' => $setors,
         ]);
     }
 
@@ -86,11 +85,11 @@ class FuncionarioController extends Controller
         //select * from funcionario where id = $id;
         $funcionario = Funcionario::findOrFail($id);
         //dd($usuario);
-        $setores = Setor::orderBy('nome')->get();
+        $setors = Setor::orderBy('nome')->get();
 
         return view('FuncionarioForm')->with([
             'funcionario' => $funcionario,
-            'setores' => $setores,
+            'setors' => $setors,
         ]);
     }
 

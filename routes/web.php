@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CardapioController;
+use App\Http\Controllers\EstoqueController;
+use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;

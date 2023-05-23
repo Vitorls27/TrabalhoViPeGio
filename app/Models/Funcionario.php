@@ -13,4 +13,8 @@ class Funcionario extends Model
     protected $fillable = [
         'nome', 'telefone', 'email', 'setor_id', 'imgfun'
     ];
+
+    public function setor(){
+        return $this->belongsTo(Setor::class,'setor_id','id');
+    }
 }

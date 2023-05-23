@@ -128,9 +128,7 @@ class EstoqueController extends Controller
 
         $estoque->delete();
 
-        return \redirect()->action(
-            'App\Http\Controllers\EstoqueController@index'
-        );
+        return \redirect('estoque')->with('success', 'Removido com sucesso!');
     }
 
     function search(Request $request)

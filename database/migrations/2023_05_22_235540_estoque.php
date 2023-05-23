@@ -13,18 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('setors', function (Blueprint $table) {
+        Schema::create('estoque', function (Blueprint $table) {
             $table->id();
-            $table->string('nome',100);
+            $table->string('nome',120);
+            $table->float('peso',10);
+            $table->float('valor', 8);
+            $table->integer('quantidade',false,true);
             $table->timestamps();
         });
-
-
-        Schema::table('funcionario', function (Blueprint $table) {
-            $table->foreignId('setor_id')->nullable()->constrained('setor')->default(null);
-        });
-
- 
     }
 
     /**
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setors');
+        Schema::dropIfExists('estoque');
     }
 };
