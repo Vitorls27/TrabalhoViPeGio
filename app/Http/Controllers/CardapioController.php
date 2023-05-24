@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cardapio;
-use App\Models\Categoria;
+use App\Models\Tipo;
 
 class CardapioController extends Controller
 {
@@ -18,9 +18,9 @@ class CardapioController extends Controller
 
     function create()
     {
-        $categorias = Categoria::orderBy('nome')->get();
+        $tipos = Tipo::orderBy('nome')->get();
 
-        return view('cardapioForm')->with(['categorias' => $categorias]);
+        return view('cardapioForm')->with(['tipos' => $tipos]);
     }
 
     function store(Request $request)
@@ -29,6 +29,7 @@ class CardapioController extends Controller
             [
                 'nome' => 'required | max: 120',
                 'valor' => 'required | max: 10',
+                'tipo_id' => ' nullable',
                 'descriçao' => 'nullable',
                 'imgprod' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
@@ -55,6 +56,7 @@ class CardapioController extends Controller
         Cardapio::create([
             'nome' => $request->nome,
             'valor' => $request->valor,
+            'tipo_id' => $request->tipo_id,
             'descriçao' => $request->descriçao,
             'imgprod' => $nome_arquivo,
         ]);
@@ -69,11 +71,11 @@ class CardapioController extends Controller
         //select * from cardapio where id = $id;
         $cardapio = Cardapio::findOrFail($id);
         //dd($cardapio);
-        $categorias = Categoria::orderBy('nome')->get();
+        $tipos = Tipo::orderBy('nome')->get();
 
         return view('CardapioForm')->with([
             'cardapio' => $cardapio,
-            'categorias' => $categorias,
+            'tipos' => $tipos,
         ]);
     }
 
@@ -82,11 +84,11 @@ class CardapioController extends Controller
         //select * from cardapio where id = $id;
         $cardapio = Cardapio::findOrFail($id);
         //dd($cardapio);
-        $categorias = Categoria::orderBy('nome')->get();
+        $tipos = Tipo::orderBy('nome')->get();
 
         return view('CardapioForm')->with([
             'cardapio' => $cardapio,
-            'categorias' => $categorias,
+            'tipos' => $tipos,
         ]);
     }
 
@@ -97,6 +99,7 @@ class CardapioController extends Controller
             [
                 'nome' => 'required | max: 120',
                 'valor' => 'required | max: 10',
+                'tipo_id' => ' nullable',
                 'descriçao' => 'nullable',
                 'imgprod' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
@@ -124,6 +127,7 @@ class CardapioController extends Controller
             [
                 'nome' => $request->nome,
                 'valor' => $request->valor,
+                'tipo_id' => $request->tipo_id,
                 'descriçao' => $request->descriçao,
                 'imgprod' => $nome_arquivo,
             ]

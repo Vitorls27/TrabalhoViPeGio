@@ -10,9 +10,8 @@
             <select name="campo" class="form-select">
                 <option value="nome">Nome</option>
                 <option value="peso">Peso</option>
-                <option value="custo">Vusto</option>
+                <option value="custo">Custo</option>
                 <option value="quantidade">Quantidade</option>
-                <option value="tipo_id">Tipo</option>
             </select>
         </div>
         <div class="col-4">
@@ -33,7 +32,7 @@
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
             <th scope="col">Peso</th>
-            <th scope="col">Vusto</th>
+            <th scope="col">Custo</th>
             <th scope="col">Quantidade</th>
             <th scope="col"></th>
             <th scope="col"></th>

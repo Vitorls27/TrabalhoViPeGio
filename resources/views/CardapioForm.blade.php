@@ -41,8 +41,7 @@
             </div>
             <div class="col-3">
                 <label class="form-label">Descrição</label><br>
-                <input type="descriçao" class="form-control" name="descriçao"
-                    value="@if (!empty(old('descriçao'))) {{ old('descriçao') }} @elseif(!empty($cardapio->descriçao)) {{ $cardapio->descriçao }} @else {{ '' }} @endif" /><br>
+                <textarea class="form-control" name="descriçao" rows="7" cols="100%">@if (!empty(old('descriçao'))) {{ old('descriçao') }} @elseif(!empty($cardapio->descriçao)) {{ $cardapio->descriçao }} @else {{ '' }} @endif</textarea>
             </div>
             @php
                 $nome_imagem = !empty($cardapio->imgprod) ? $cardapio->imgprod : 'sem_imagem.jpg';

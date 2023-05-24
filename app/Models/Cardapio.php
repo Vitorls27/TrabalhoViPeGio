@@ -11,6 +11,10 @@ class Cardapio extends Model
     protected $table = "cardapio";
 
     protected $fillable = [
-        'nome', 'valor', 'descriçao', 'imgprod'
+        'nome', 'valor', 'tipo_id', 'descriçao', 'imgprod'
     ];
+
+    public function tipo(){
+        return $this->belongsTo(Tipo::class,'tipo_id','id');
+    }
 }

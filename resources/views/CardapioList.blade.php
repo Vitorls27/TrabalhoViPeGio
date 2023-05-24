@@ -10,6 +10,7 @@
             <select name="campo" class="form-select">
                 <option value="nome">Nome</option>
                 <option value="valor">Valor(R$)</option>
+                <option value="tipo">Tipo</option>
             </select>
         </div>
         <div class="col-4">
@@ -45,8 +46,8 @@
                 <td scope='row'>{{ $item->id }}</td>
                 <td>{{ $item->nome }}</td>
                 <td>{{ $item->valor }}</td>
-                <td>{{ $item->descrição }}</td>
                 <td>{{ $item->tipo->nome }}</td>
+                <td style="width: 30%; text-align: center;">{{ $item->descriçao }}</td>
                 <td><img src="/storage/{{ $nome_imagem }}" width="100px" class="img-thumbnail" /> </td>
                 <td><a href="{{ action('App\Http\Controllers\CardapioController@edit', $item->id) }}"><i
                             class='fa-solid fa-pen-to-square' style='color:orange;'></i></a></td>

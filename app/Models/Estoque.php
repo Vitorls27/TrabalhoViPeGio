@@ -11,10 +11,6 @@ class Estoque extends Model
     protected $table = "estoque";
 
     protected $fillable = [
-        'nome', 'peso', 'custo', 'quantidade','tipo_id'
+        'nome', 'peso', 'custo', 'quantidade'
     ];
-
-    public function tipo(){
-        return $this->belongsTo(Tipo::class,'tipo_id','id');
-    }
 }

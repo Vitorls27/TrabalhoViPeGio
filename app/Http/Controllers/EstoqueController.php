@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Estoque;
-use App\Models\Tipo;
+use App\Models\Categoria;
 
 class EstoqueController extends Controller
 {
@@ -18,9 +18,9 @@ class EstoqueController extends Controller
 
     function create()
     {
-        $tipos = Tipo::orderBy('nome')->get();
+        $categorias = Categoria::orderBy('nome')->get();
 
-        return view('EstoqueForm')->with(['tipos' => $tipos]);
+        return view('EstoqueForm')->with(['categorias' => $categorias]);
     }
 
     function store(Request $request)
@@ -30,7 +30,6 @@ class EstoqueController extends Controller
                 'nome' => 'required | max: 120',
                 'peso' => 'required | max: 10',
                 'custo' => ' required | max: 8',
-                'tipo_id' => ' nullable',
                 'quantidade' => ' required | max: 6',
             ],
             [
@@ -50,7 +49,6 @@ class EstoqueController extends Controller
             'nome' => $request->nome,
             'peso' => $request->peso,
             'custo' => $request->custo,
-            'tipo_id' => $request->tipo_id,
             'quantidade' => $request->quantidade,
         ]);
 
@@ -64,11 +62,10 @@ class EstoqueController extends Controller
         //select * from estoque where id = $id;
         $estoque = Estoque::findOrFail($id);
         //dd($estoque);
-        $tipos = Tipo::orderBy('nome')->get();
+        
 
         return view('EstoqueForm')->with([
             'estoque' => $estoque,
-            'tipos' => $tipos,
         ]);
     }
 
@@ -77,11 +74,9 @@ class EstoqueController extends Controller
         //select * from estoque$estoque where id = $id;
         $estoque = Estoque::findOrFail($id);
         //dd($estoque);
-        $tipos = Tipo::orderBy('nome')->get();
 
         return view('EstoqueForm')->with([
             'estoque' => $estoque,
-            'tipos' => $tipos,
         ]);
     }
 
@@ -93,7 +88,6 @@ class EstoqueController extends Controller
                 'nome' => 'required | max: 120',
                 'peso' => 'required | max: 10',
                 'custo' => ' required | max: 8',
-                'tipo_id' => ' nullable',
                 'quantidade' => ' required | max: 6',
             ],
             [
@@ -113,7 +107,6 @@ class EstoqueController extends Controller
             'nome' => $request->nome,
             'peso' => $request->peso,
             'custo' => $request->custo,
-            'tipo_id' => $request->tipo_id,
             'quantidade' => $request->quantidade,
         ];
 

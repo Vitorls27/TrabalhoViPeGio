@@ -21,7 +21,7 @@ return new class extends Migration
 
         Schema::disableForeignKeyConstraints();
 
-        Schema::table('estoque', function (Blueprint $table) {
+        Schema::table('cardapio', function (Blueprint $table) {
             $table->foreignId('tipo_id')->nullable()->constrained('tipo')->default(null);
 
         });
