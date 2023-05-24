@@ -18,9 +18,9 @@ class FuncionarioController extends Controller
 
     function create()
     {
-        $setor = Setor::orderBy('nome')->get();
+        $setores = Setor::orderBy('nome')->get();
 
-        return view('FuncionarioForm')->with(['setor' => $setor]);
+        return view('FuncionarioForm')->with(['setores' => $setores]);
     }
 
     function store(Request $request)

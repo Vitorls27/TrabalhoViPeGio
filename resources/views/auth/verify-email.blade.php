@@ -15,7 +15,7 @@
 
             <div>
                 <x-primary-button>
-                    {{ __('Link reenviado para o email que foi cadastrado'.) }}
+                    {{ __('Link reenviado para o email que foi cadastrado.') }}
                 </x-primary-button>
             </div>
         </form>

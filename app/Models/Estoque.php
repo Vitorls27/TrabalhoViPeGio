@@ -11,7 +11,7 @@ class Estoque extends Model
     protected $table = "estoque";
 
     protected $fillable = [
-        'nome', 'peso', 'valor', 'quantidade','tipo_id'
+        'nome', 'peso', 'custo', 'quantidade','tipo_id'
     ];
 
     public function tipo(){

@@ -29,7 +29,7 @@ class EstoqueController extends Controller
             [
                 'nome' => 'required | max: 120',
                 'peso' => 'required | max: 10',
-                'valor' => ' required | max: 8',
+                'custo' => ' required | max: 8',
                 'tipo_id' => ' nullable',
                 'quantidade' => ' required | max: 6',
             ],
@@ -38,8 +38,8 @@ class EstoqueController extends Controller
                 'nome.max' => 'Só é permitido 120 caracteres',
                 'peso.required' => 'O peso é obrigatório',
                 'peso.max' => 'Só é permitido 10 caracteres',
-                'valor.required' => 'O valor é obrigatório',
-                'valor.max' => 'Só é permitido 8 caracteres',
+                'custo.required' => 'O custo é obrigatório',
+                'custo.max' => 'Só é permitido 8 caracteres',
                 'quantidade.required' => 'O quantidade é obrigatório',
                 'quantidade.max' => 'Só é permitido 6 caracteres',
             ]
@@ -49,7 +49,7 @@ class EstoqueController extends Controller
         Estoque::create([
             'nome' => $request->nome,
             'peso' => $request->peso,
-            'valor' => $request->valor,
+            'custo' => $request->custo,
             'tipo_id' => $request->tipo_id,
             'quantidade' => $request->quantidade,
         ]);
@@ -92,7 +92,7 @@ class EstoqueController extends Controller
             [
                 'nome' => 'required | max: 120',
                 'peso' => 'required | max: 10',
-                'valor' => ' required | max: 8',
+                'custo' => ' required | max: 8',
                 'tipo_id' => ' nullable',
                 'quantidade' => ' required | max: 6',
             ],
@@ -101,24 +101,29 @@ class EstoqueController extends Controller
                 'nome.max' => 'Só é permitido 120 caracteres',
                 'peso.required' => 'O peso é obrigatório',
                 'peso.max' => 'Só é permitido 10 caracteres',
-                'valor.required' => 'O valor é obrigatório',
-                'valor.max' => 'Só é permitido 8 caracteres',
+                'custo.required' => 'O custo é obrigatório',
+                'custo.max' => 'Só é permitido 8 caracteres',
                 'quantidade.required' => 'O quantidade é obrigatório',
                 'quantidade.max' => 'Só é permitido 6 caracteres',
             ]
         );
 
-        Estoque::create([
+        //adiciono os dados do formulário ao vetor
+        $dados =  [
             'nome' => $request->nome,
             'peso' => $request->peso,
-            'valor' => $request->valor,
+            'custo' => $request->custo,
             'tipo_id' => $request->tipo_id,
             'quantidade' => $request->quantidade,
-        ]);
+        ];
 
-        return \redirect()->action(
-            'App\Http\Controllers\EstoqueController@index'
+        //metodo para atualizar passando o vetor com os dados do form e o id
+        Estoque::updateOrCreate(
+            ['id' => $request->id],
+            $dados
         );
+
+        return \redirect('estoque')->with('success', 'Atualizado com sucesso!');
     }
     //
 
@@ -137,7 +142,7 @@ class EstoqueController extends Controller
             $estoque = Estoque::where(
                 'nome',
                 'like',
-                '%' . $request->valor . '%'
+                '%' . $request->custo . '%'
             )->get();
         } else {
             $estoque = Estoque::all();

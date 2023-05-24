@@ -11,6 +11,6 @@ class Cardapio extends Model
     protected $table = "cardapio";
 
     protected $fillable = [
-        'nome', 'custo', 'descriçao', 'imgprod'
+        'nome', 'valor', 'descriçao', 'imgprod'
     ];
 }

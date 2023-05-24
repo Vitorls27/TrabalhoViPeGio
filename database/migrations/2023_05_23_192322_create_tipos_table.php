@@ -13,14 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('estoque', function (Blueprint $table) {
+        Schema::create('tipo', function (Blueprint $table) {
             $table->id();
-            $table->string('nome',120);
-            $table->float('peso',10);
-            $table->float('custo', 8);
-            $table->integer('quantidade',false,true);
+            $table->string('nome',8);
             $table->timestamps();
         });
+
+        Schema::disableForeignKeyConstraints();
+
+        Schema::table('estoque', function (Blueprint $table) {
+            $table->foreignId('tipo_id')->nullable()->constrained('tipo')->default(null);
+
+        });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -30,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estoque');
+        Schema::dropIfExists('tipo');
     }
 };

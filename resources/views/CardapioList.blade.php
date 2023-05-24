@@ -9,7 +9,7 @@
         <div class="col-2">
             <select name="campo" class="form-select">
                 <option value="nome">Nome</option>
-                <option value="custo">Custo(R$)</option>
+                <option value="valor">Valor(R$)</option>
             </select>
         </div>
         <div class="col-4">
@@ -29,7 +29,8 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
-            <th scope="col">Custo(R$)</th>
+            <th scope="col">Valor(R$)</th>
+            <th scope="col">Tipo</th>
             <th scope="col">Descrição</th>
             <th scope="col"></th>
             <th scope="col"></th>
@@ -43,8 +44,9 @@
             <tr>
                 <td scope='row'>{{ $item->id }}</td>
                 <td>{{ $item->nome }}</td>
-                <td>{{ $item->custo }}</td>
+                <td>{{ $item->valor }}</td>
                 <td>{{ $item->descrição }}</td>
+                <td>{{ $item->tipo->nome }}</td>
                 <td><img src="/storage/{{ $nome_imagem }}" width="100px" class="img-thumbnail" /> </td>
                 <td><a href="{{ action('App\Http\Controllers\CardapioController@edit', $item->id) }}"><i
                             class='fa-solid fa-pen-to-square' style='color:orange;'></i></a></td>

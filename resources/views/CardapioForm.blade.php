@@ -27,9 +27,17 @@
                     value="@if (!empty(old('nome'))) {{ old('nome') }} @elseif(!empty($cardapio->nome)) {{ $cardapio->nome }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
-                <label class="form-label">Custo(R$)</label><br>
-                <input type="text" class="form-control" name="custo"
-                    value="@if (!empty(old('custo'))) {{ old('custo') }} @elseif(!empty($cardapio->custo)) {{ $cardapio->custo }} @else {{ '' }} @endif" /><br>
+                <label class="form-label">Valor(R$)</label><br>
+                <input type="text" class="form-control" name="valor"
+                    value="@if (!empty(old('valor'))) {{ old('valor') }} @elseif(!empty($cardapio->valor)) {{ $cardapio->valor }} @else {{ '' }} @endif" /><br>
+            </div>
+            <div class="col-3">
+                <label class="form-label">Tipo de Produto</label><br>
+                <select name="tipo_id" class="form-select">
+                    <option value="1">salgado</option>
+                    <option value="2">doce</option>
+                    <option value="3">bebida</option>
+                </select>
             </div>
             <div class="col-3">
                 <label class="form-label">Descrição</label><br>

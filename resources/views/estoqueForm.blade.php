@@ -2,7 +2,7 @@
 
 @section('conteudo')
     @php
-        if (!empty($usuario->id)) {
+        if (!empty($estoque->id)) {
             $route = route('estoque.update', $estoque->id);
         } else {
             $route = route('estoque.store');
@@ -13,7 +13,7 @@
 
 <div class="col">
     <div class="row">
-        <form action='{{ $route }}' method="POST" enctype="multipart/form-data">
+        <form action="{{ $route }}" method="POST" enctype="multipart/form-data">
             @csrf
             @if (!empty($estoque->id))
                 @method('PUT')
@@ -32,22 +32,14 @@
                     value="@if (!empty(old('peso'))) {{ old('peso') }} @elseif(!empty($estoque->peso)) {{ $estoque->peso }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
-                <label class="form-label">Valor(R$) por Uni.</label><br>
-                <input type="valor" class="form-control" name="valor"
-                    value="@if (!empty(old('valor'))) {{ old('valor') }} @elseif(!empty($estoque->valor)) {{ $estoque->email }} @else {{ '' }} @endif" /><br>
+                <label class="form-label">Custo(R$) por Uni.</label><br>
+                <input type="custo" class="form-control" name="custo"
+                    value="@if (!empty(old('custo'))) {{ old('custo') }} @elseif(!empty($estoque->custo)) {{ $estoque->custo }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">Quantidade</label><br>
                 <input type="quantidade" class="form-control" name="quantidade"
-                    value="@if (!empty(old('quantidade'))) {{ old('quantidade') }} @elseif(!empty($estoque->quantidade)) {{ $estoque->email }} @else {{ '' }} @endif" /><br>
-            </div>
-            <div class="col-3">
-                <label class="form-label">Tipo de Produto</label><br>
-                <select name="tipo_id" class="form-select">
-                    <option value="1">salgado</option>
-                    <option value="2">doce</option>
-                    <option value="3">bebida</option>
-                </select>
+                    value="@if (!empty(old('quantidade'))) {{ old('quantidade') }} @elseif(!empty($estoque->quantidade)) {{ $estoque->quantidade }} @else {{ '' }} @endif" /><br>
             </div>
             <button class="btn btn-success" type="submit">
                 <i class="fa-solid fa-save"></i> Salvar

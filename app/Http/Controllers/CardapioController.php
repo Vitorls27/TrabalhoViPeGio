@@ -28,15 +28,15 @@ class CardapioController extends Controller
         $request->validate(
             [
                 'nome' => 'required | max: 120',
-                'custo' => 'required | max: 10',
+                'valor' => 'required | max: 10',
                 'descriçao' => 'nullable',
                 'imgprod' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
                 'nome.max' => 'Só é permitido 120 caracteres',
-                'custo.required' => 'O custo é obrigatório',
-                'custo.max' => 'Só é permitido 10 caracteres',
+                'valor.required' => 'O valor é obrigatório',
+                'valor.max' => 'Só é permitido 10 caracteres',
             ]
         );
 
@@ -54,7 +54,7 @@ class CardapioController extends Controller
         //dd( $request->nome);
         Cardapio::create([
             'nome' => $request->nome,
-            'custo' => $request->custo,
+            'valor' => $request->valor,
             'descriçao' => $request->descriçao,
             'imgprod' => $nome_arquivo,
         ]);
@@ -96,15 +96,15 @@ class CardapioController extends Controller
         $request->validate(
             [
                 'nome' => 'required | max: 120',
-                'custo' => 'required | max: 10',
+                'valor' => 'required | max: 10',
                 'descriçao' => 'nullable',
                 'imgprod' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
                 'nome.max' => 'Só é permitido 120 caracteres',
-                'custo.required' => 'O custo é obrigatório',
-                'custo.max' => 'Só é permitido 10 caracteres',
+                'valor.required' => 'O valor é obrigatório',
+                'valor.max' => 'Só é permitido 10 caracteres',
             ]
         );
 
@@ -123,7 +123,7 @@ class CardapioController extends Controller
             ['id' => $request->id],
             [
                 'nome' => $request->nome,
-                'custo' => $request->custo,
+                'valor' => $request->valor,
                 'descriçao' => $request->descriçao,
                 'imgprod' => $nome_arquivo,
             ]
