@@ -66,48 +66,85 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <h2 class="section-heading mb-5">
-                                <span class="section-heading-upper">Come On In</span>
-                                <span class="section-heading-lower">We're Open</span>
+                                <span class="section-heading-upper">Cada café é uma história que conta</span>
+                                <span class="section-heading-lower">O sabor de cada região</span>
                             </h2>
                             <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
                                 <li class="list-unstyled-item list-hours-item d-flex">
-                                    Sunday
-                                    <span class="ms-auto">Closed</span>
+                                    Café Carioca
+                                    <span class="ms-auto">R$4,00</span>
                                 </li>
                                 <li class="list-unstyled-item list-hours-item d-flex">
-                                    Monday
-                                    <span class="ms-auto">7:00 AM to 8:00 PM</span>
+                                    Capuccino Vip Etiópia
+                                    <span class="ms-auto">R$9,50</span>
                                 </li>
                                 <li class="list-unstyled-item list-hours-item d-flex">
-                                    Tuesday
-                                    <span class="ms-auto">7:00 AM to 8:00 PM</span>
+                                    Café Flamengo
+                                    <span class="ms-auto">R$10,00</span>
                                 </li>
                                 <li class="list-unstyled-item list-hours-item d-flex">
-                                    Wednesday
-                                    <span class="ms-auto">7:00 AM to 8:00 PM</span>
+                                    Café curto sulista extra forte
+                                    <span class="ms-auto">R$7,00</span>
                                 </li>
                                 <li class="list-unstyled-item list-hours-item d-flex">
-                                    Thursday
-                                    <span class="ms-auto">7:00 AM to 8:00 PM</span>
+                                    Café Mineiro (com leite)
+                                    <span class="ms-auto">R$6,00</span>
+                                </li>
+
+                                <li class="list-unstyled-item list-hours-item d-flex">
+                                    Café Pará
+                                    <span class="ms-auto">R$7,00</span>
                                 </li>
                                 <li class="list-unstyled-item list-hours-item d-flex">
-                                    Friday
-                                    <span class="ms-auto">7:00 AM to 8:00 PM</span>
+                                    Café Nortista
+                                    <span class="ms-auto">R$8,00</span>
                                 </li>
                                 <li class="list-unstyled-item list-hours-item d-flex">
-                                    Saturday
-                                    <span class="ms-auto">9:00 AM to 5:00 PM</span>
+                                    Capuccino lá de Casa
+                                    <span class="ms-auto">R$7,50</span>
                                 </li>
-                            </ul>
+
+
+                                <li class="list-unstyled-item list-hours-item d-flex">
+                                    Combos café + lanche regional à sua escolha: (São Paulo, Minas, SC, Pará e Rio)
+                                    <span class="ms-auto"></span>
+                                </li>
+
+                                <li class="list-unstyled-item list-hours-item d-flex">
+
+                                    <span class="ms-auto">R$22,00</span>
+                                </li>
+
+                                <li class="list-unstyled-item list-hours-item d-flex">
+                                    Pão de queijo mineiro
+                                    <span class="ms-auto">R$5,00</span>
+                                </li>
+
+                                <li class="list-unstyled-item list-hours-item d-flex">
+                                    Tapioquinha salgada
+                                    <span class="ms-auto">R$8,00</span>
+                                </li>
+
+                                <li class="list-unstyled-item list-hours-item d-flex">
+                                    Croissant doce
+                                    <span class="ms-auto">R$22,90</span>
+                                </li>
+                                </ul>
                             <p class="address mb-5">
                                 <em>
-                                    <strong>1116 Orchard Street</strong>
+                                    <strong>Visite-nos! </strong>
                                     <br />
-                                    Golden Valley, Minnesota
+                                    R. Luis Paratto, 1555D
+                                    CEP 888122770
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                  <strong>Agende seu Evento:</strong>
                                 </em>
                             </p>
                             <p class="mb-0">
-                                <small><em>Call Anytime</em></small>
+                                <small><em></em></small>
                                 <br />
                                 (317) 585-8468
                             </p>
