@@ -62,7 +62,7 @@ class EstoqueController extends Controller
         //select * from estoque where id = $id;
         $estoque = Estoque::findOrFail($id);
         //dd($estoque);
-        
+
 
         return view('EstoqueForm')->with([
             'estoque' => $estoque,
@@ -131,9 +131,9 @@ class EstoqueController extends Controller
 
     function search(Request $request)
     {
-        if ($request->campo == 'nome') {
+        if ($request->campo) {
             $estoque = Estoque::where(
-                'nome',
+                $request->campo,
                 'like',
                 '%' . $request->custo . '%'
             )->get();

@@ -56,7 +56,6 @@ class UsuarioController extends Controller
         //verifica se o campo imagem foi passado uma imagem
         if ($imagem) {
             $nome_arquivo = date('YmdHis') . '.' . $imagem->getClientOriginalExtension();
-
             $diretorio = 'imagem/';
             //salva a imagem em uma pasta
             $imagem->storeAs($diretorio, $nome_arquivo, 'public');
@@ -159,9 +158,9 @@ class UsuarioController extends Controller
 
     function search(Request $request)
     {
-        if ($request->campo == 'nome') {
+        if ($request->campo) {
             $usuarios = Usuario::where(
-                'nome',
+                $request->campo,
                 'like',
                 '%' . $request->valor . '%'
             )->get();

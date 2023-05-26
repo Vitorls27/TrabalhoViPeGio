@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cardapio;
 use App\Models\Tipo;
+use Illuminate\Support\Facades\Storage;
 
 class CardapioController extends Controller
 {
@@ -20,7 +21,7 @@ class CardapioController extends Controller
     {
         $tipos = Tipo::orderBy('nome')->get();
 
-        return view('cardapioForm')->with(['tipos' => $tipos]);
+        return view('CardapioForm')->with(['tipos' => $tipos]);
     }
 
     function store(Request $request)
@@ -40,26 +41,27 @@ class CardapioController extends Controller
                 'valor.max' => 'Só é permitido 10 caracteres',
             ]
         );
-
-        $imgprod = $request->file('imgprod');
-        $nome_arquivo = '';
-        if ($imgprod) {
-            $nome_arquivo =
-                date('YmdHis') . '.' . $imgprod->getClientOriginalExtension();
-
-            $diretorio = 'imagem/';
-            $imgprod->storeAs($diretorio, $nome_arquivo, 'public');
-            $nome_arquivo = $diretorio . $nome_arquivo;
-        }
-
-        //dd( $request->nome);
-        Cardapio::create([
+        $dados = [
             'nome' => $request->nome,
             'valor' => $request->valor,
             'tipo_id' => $request->tipo_id,
             'descriçao' => $request->descriçao,
-            'imgprod' => $nome_arquivo,
-        ]);
+        ];
+
+        $imgprod = $request->file('imgprod');
+        $nome_arquivo = '';
+        //verifica se o campo imgprod foi passado uma imgprod
+        if ($imgprod) {
+            $nome_arquivo = date('YmdHis') . '.' . $imgprod->getClientOriginalExtension();
+            $diretorio = 'imagem/';
+            //salva a imgprod em uma pasta
+            $imgprod->storeAs($diretorio, $nome_arquivo, 'public');
+            //adiciona ao vetor o diretorio do arquivo e o nome
+            $dados['imgprod'] = $diretorio . $nome_arquivo;
+        }
+
+        //dd( $request->nome);
+        Cardapio::create($dados);
 
         return \redirect()->action(
             'App\Http\Controllers\CardapioController@index'
@@ -68,12 +70,12 @@ class CardapioController extends Controller
 
     function edit($id)
     {
-        //select * from cardapio where id = $id;
+        //select * from usuario where id = $id;
         $cardapio = Cardapio::findOrFail($id);
         //dd($cardapio);
         $tipos = Tipo::orderBy('nome')->get();
 
-        return view('CardapioForm')->with([
+        return view('cardapioForm')->with([
             'cardapio' => $cardapio,
             'tipos' => $tipos,
         ]);
@@ -110,27 +112,29 @@ class CardapioController extends Controller
                 'valor.max' => 'Só é permitido 10 caracteres',
             ]
         );
+        $dados = [
+            'nome' => $request->nome,
+            'valor' => $request->valor,
+            'tipo_id' => $request->tipo_id,
+            'descriçao' => $request->descriçao,
+        ];
+
 
         $imgprod = $request->file('imgprod');
         $nome_arquivo = '';
+        //verifica se o campo imgprod foi passado uma imgprod
         if ($imgprod) {
-            $nome_arquivo =
-                date('YmdHis') . '.' . $imgprod->getClientOriginalExtension();
-
+            $nome_arquivo = date('YmdHis') . '.' . $imgprod->getClientOriginalExtension();
             $diretorio = 'imagem/';
+            //salva a imgprod em uma pasta
             $imgprod->storeAs($diretorio, $nome_arquivo, 'public');
-            $nome_arquivo = $diretorio . $nome_arquivo;
+            //adiciona ao vetor o diretorio do arquivo e o nome
+            $dados['imgprod'] = $diretorio . $nome_arquivo;
         }
 
         Cardapio::updateOrCreate(
             ['id' => $request->id],
-            [
-                'nome' => $request->nome,
-                'valor' => $request->valor,
-                'tipo_id' => $request->tipo_id,
-                'descriçao' => $request->descriçao,
-                'imgprod' => $nome_arquivo,
-            ]
+            $dados
         );
 
         return \redirect()->action(
@@ -143,18 +147,19 @@ class CardapioController extends Controller
     {
         $cardapio = Cardapio::findOrFail($id);
 
+        if ($cardapio->imgprod){
+            Storage::disk('public')->delete($cardapio->imgprod);
+        }
         $cardapio->delete();
 
-        return \redirect()->action(
-            'App\Http\Controllers\CardapioController@index'
-        );
+        return \redirect('cardapio')->with('success', 'Atualizado com sucesso!');
     }
 
     function search(Request $request)
     {
-        if ($request->campo == 'nome') {
+        if ($request->campo) {
             $cardapios = Cardapio::where(
-                'nome',
+                $request->campo,
                 'like',
                 '%' . $request->valor . '%'
             )->get();
@@ -163,6 +168,6 @@ class CardapioController extends Controller
         }
 
         //dd($cardapios);
-        return view('CardapioList')->with(['cardapios' => $cardapios]);
+        return view('cardapioList')->with(['cardapios' => $cardapios]);
     }
 }

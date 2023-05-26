@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Funcionario;
 use App\Models\Setor;
+use Illuminate\Support\Facades\Storage;
 
 class FuncionarioController extends Controller
 {
@@ -69,13 +70,13 @@ class FuncionarioController extends Controller
 
     function edit($id)
     {
-        //select * from Funcionario where id = $id;
+        //select * from usuario where id = $id;
         $funcionario = Funcionario::findOrFail($id);
-        //dd($Funcionario);
+        //dd($funcionario);
         $setor = Setor::orderBy('nome')->get();
 
-        return view('FuncionarioForm')->with([
-            'Funcionario' => $funcionario,
+        return view('funcionarioForm')->with([
+            'funcionario' => $funcionario,
             'setor' => $setor,
         ]);
     }
@@ -146,15 +147,18 @@ class FuncionarioController extends Controller
         $funcionario = Funcionario::findOrFail($id);
 
         // verifica se existe o arquivo vinculado ao registro e depois remove
+        if ($funcionario->imgfun){
+            Storage::disk('public')->delete($funcionario->imgfun);
+        }
         $funcionario->delete();
         return \redirect('funcionario')->with('success', 'Removido com sucesso!');
     }
 
     function search(Request $request)
     {
-        if ($request->campo == 'nome') {
+        if ($request->campo) {
             $funcionarios = Funcionario::where(
-                'nome',
+                $request->campo,
                 'like',
                 '%' . $request->valor . '%'
             )->get();
