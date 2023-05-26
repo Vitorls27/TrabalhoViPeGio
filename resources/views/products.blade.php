@@ -104,20 +104,23 @@
                                 <span class="section-heading-lower">Para pequenos e grandes encontros</span>
                             </h2>
                         </div>
-                    </div>
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{asset('img/products-03.jpg')}}" alt="..." />
-                    <div class="product-item-description d-flex me-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">Agendando um horário, vamos preparar o cardápio perfeito para seu Happy Hour ou Chá da tarde. Para pequenas reuniões e encontros, pode contar conosco.</p></div>
-                    </div>
-                </div>
-            </div>
+        </div>
+        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{asset('img/products-03.jpg')}}" alt="..." />
+        <div class="product-item-description d-flex me-auto">
+        <div class="bg-faded p-5 rounded"><p class="mb-0">Agendando um horário, vamos preparar o cardápio perfeito para seu Happy Hour ou Chá da tarde. Para pequenas reuniões e encontros, pode contar conosco.</p></div>
+        </div>
+        </div>
+        </div>
         </section>
+
         <footer class="footer text-faded text-center py-5">
             <div class="container"><p class="m-0 small">Equipe &copy; Giordano Parisotto | Pedro Henrique Prola | Vitor de Souza</div>
         </footer>
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        
     </body>
 </html>
