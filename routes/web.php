@@ -31,9 +31,9 @@ Route::get('/products', function () {
     return view('products');
 });
 Route::resource('cardapio', CardapioController::class);
-    Route::get('cardapio/search', [CardapioController::class, 'search'])->name(
-        'cardapio.search'
-    );
+Route::post('cardapio/search', [CardapioController::class, 'search'])->name(
+    'cardapio.search'
+);
 
 Route::get('/dashboard', function () {
     return view('base.dashboard');

@@ -1,8 +1,8 @@
 @extends('base.app')
 
 @section('conteudo')
-@section('tituloPagina', 'Listagem de Usuários')
-<h1>Listagem de Usuários</h1>
+@section('tituloPagina', 'Listagem do Estoque')
+<h1>Listagem do Estoque</h1>
 <form action="{{ route('estoque.search') }}" method="post">
     @csrf
     <div class="row">
@@ -15,7 +15,7 @@
             </select>
         </div>
         <div class="col-4">
-            <input type="text" class="form-control" placeholder="Pesquisar" name="custo" />
+            <input type="text" class="form-control" placeholder="Pesquisar" name="valor" />
         </div>
         <div class="col-6">
             <button class="btn btn-primary" type="submit">
