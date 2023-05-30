@@ -19,6 +19,9 @@
                             <li><a class="dropdown-item" href="{{ url('/cardapio') }}">Cardápio</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/leitura') }}">Sensor</a>
+                    </li>
                 </ul>
             </div>
             <div style="margin-right: 50px;">

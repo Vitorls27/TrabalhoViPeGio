@@ -63,6 +63,10 @@ Route::middleware('auth')->group(function () {
     Route::post('funcionario/search', [FuncionarioController::class, 'search'])->name(
         'funcionario.search'
     );
+    Route::resource('leitura', LeituraController::class);
+    Route::post('leitura/search', [LeituraController::class, 'search'])->name(
+        'leitura.search'
+    );
 });
 
 require __DIR__ . '/auth.php';

@@ -19,6 +19,15 @@ return new class extends Migration
             $table->integer('contador');
             $table->timestamps();
         });
+
+        Schema::disableForeignKeyConstraints();
+
+        Schema::table('leitura', function (Blueprint $table) {
+            $table->foreignId('sensor_id')->nullable()->constrained('sensor')->default(null);
+
+        });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
