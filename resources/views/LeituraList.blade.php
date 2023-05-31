@@ -11,8 +11,6 @@
                 <option value="data_leitura">data da leitura</option>
                 <option value="hora_leitura">hora da leitura</option>
                 <option value="valor_sensor">valor do sensor</option>
-                <option value="sensor_id">nome do sensor</option>
-                <option value="mac_id">identificação do mac</option>
             </select>
         </div>
         <div class="col-4">

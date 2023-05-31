@@ -11,7 +11,6 @@
                 <option value="nome">Nome</option>
                 <option value="telefone">Telefone</option>
                 <option value="email">Email</option>
-                <option value="setor_id">Setor</option>
             </select>
         </div>
         <div class="col-4">

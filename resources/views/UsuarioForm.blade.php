@@ -28,7 +28,7 @@
             </div>
             <div class="col-3">
                 <label class="form-label">Telefone</label><br>
-                <input type="text" class="form-control" name="telefone"
+                <input type="tel" class="form-control" name="telefone"
                     value="@if (!empty(old('telefone'))) {{ old('telefone') }} @elseif(!empty($usuario->telefone)) {{ $usuario->telefone }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">

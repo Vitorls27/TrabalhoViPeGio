@@ -10,7 +10,6 @@
             <select name="campo" class="form-select">
                 <option value="nome">Nome</option>
                 <option value="valor">Valor(R$)</option>
-                <option value="tipo_id">Tipo</option>
             </select>
         </div>
         <div class="col-4">

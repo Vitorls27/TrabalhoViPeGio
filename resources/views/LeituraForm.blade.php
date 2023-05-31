@@ -7,9 +7,10 @@
         } else {
             $route = route('leitura.store');
         }
+        $leitura->data_leitura = date('d/m/Y', strtotime($leitura->data_leitura));
     @endphp
 @section('tituloPagina', 'Formulário do Sensor')
-<h1>Formulário do</h1>
+<h1>Formulário do Sensor</h1>
 
 <div class="col">
     <div class="row">
@@ -22,19 +23,19 @@
             <input type="hidden" name="id"
                 value="@if (!empty(old('id'))) {{ old('id') }} @elseif(!empty($leitura->id)) {{ $leitura->id }} @else {{ '' }} @endif" /><br>
             <div class="col-3">
-                <label class="form-label">data da leitura {{ $leitura->data_leitura }}</label><br>
+                <label class="form-label">data da leitura</label><br>
                 <input type="date" class="form-control" name="data_leitura"
-                    value="@if (!empty(old('data_leitura'))) {{ old('data_leitura') }} @elseif(!empty($leitura->data_leitura)) {{ $leitura->data_leitura }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('data_leitura'))) {{old('data_leitura')}} @elseif(!empty($leitura->data_leitura)) {{$leitura->data_leitura}} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">hora da leitura</label><br>
                 <input type="time" class="form-control" name="hora_leitura"
-                    value="@if (!empty(old('hora_leitura'))) {{ old('hora_leitura') }} @elseif(!empty($leitura->hora_leitura)) {{ $leitura->hora_leitura }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('hora_leitura'))) {{ old('hora_leitura') }} @elseif(!empty($leitura->hora_leitura)) {{$leitura->hora_leitura}} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">valor do sensor</label><br>
                 <input type="" class="form-control" name="valor_sensor"
-                    value="@if (!empty(old('valor_sensor'))) {{ old('valor_sensor') }} @elseif(!empty($leitura->valor_sensor)) {{ $leitura->valor_sensor }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('valor_sensor'))) {{ old('valor_sensor') }} @elseif(!empty($leitura->valor_sensor)) {{$leitura->valor_sensor}} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">Sensor</label><br>
