@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\leitura;
 use App\Models\Mac;
 use App\Models\Sensor;
-use Illuminate\Support\Facades\Storage;
 
 class LeituraController extends Controller
 {
@@ -23,7 +22,7 @@ class LeituraController extends Controller
         $mac = Mac::orderBy('nome')->get();
         $sensor = Sensor::orderBy('nome')->get();
         //dd($categorias);
-        return view('leituraForm')->with(['mac' => $mac],['sensor' => $sensor]);
+        return view('leituraForm')->with(['mac' => $mac,'sensor' => $sensor]);
     }
 
     function store(Request $request)

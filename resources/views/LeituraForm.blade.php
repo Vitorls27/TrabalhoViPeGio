@@ -23,23 +23,23 @@
                 value="@if (!empty(old('id'))) {{ old('id') }} @elseif(!empty($leitura->id)) {{ $leitura->id }} @else {{ '' }} @endif" /><br>
             <div class="col-3">
                 <label class="form-label">data da leitura</label><br>
-                <input type="text" class="form-control" name="data_leitura"
-                    value="@if (!empty(old('data_leitura'))) {{ old('data_leitura') }} @elseif(!empty($leitura->data_leitura)) {{ $leitura->data_leitura }} @else {{ '' }} @endif" /><br>
+                <input type="date" class="form-control" name="data_leitura"
+                    value="@if (empty(old('data_leitura'))) {{ old('data_leitura') }} @elseif(!empty($leitura->data_leitura)) {{ $leitura->data_leitura }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">hora da leitura</label><br>
-                <input type="text" class="form-control" name="hora_leitura"
-                    value="@if (!empty(old('hora_leitura'))) {{ old('hora_leitura') }} @elseif(!empty($leitura->hora_leitura)) {{ $leitura->hora_leitura }} @else {{ '' }} @endif" /><br>
+                <input type="time" class="form-control" name="hora_leitura"
+                    value="@if (empty(old('hora_leitura'))) {{ old('hora_leitura') }} @elseif(!empty($leitura->hora_leitura)) {{ $leitura->hora_leitura }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">valor do sensor</label><br>
-                <input type="valor_sensor" class="form-control" name="valor_sensor"
+                <input type="" class="form-control" name="valor_sensor"
                     value="@if (!empty(old('valor_sensor'))) {{ old('valor_sensor') }} @elseif(!empty($leitura->valor_sensor)) {{ $leitura->valor_sensor }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">Sensor</label><br>
                 <select name="sensor_id" class="form-select">
-                    @foreach ($sensors as $item)
+                    @foreach ($sensor as $item)
                         <option value="{{ $item->id }}">{{ $item->nome }}</option>
                     @endforeach
                 </select>

@@ -24,7 +24,6 @@ return new class extends Migration
 
         Schema::table('leitura', function (Blueprint $table) {
             $table->foreignId('mac_id')->nullable()->constrained('mac')->default(null);
-
         });
 
         Schema::enableForeignKeyConstraints();
@@ -37,8 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('mac_', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('mac');
     }
 };

@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
+
 class SensorSeeder extends Seeder
 {
     /**
@@ -16,10 +18,12 @@ class SensorSeeder extends Seeder
     {
         $nomes = ['Sensor Um', 'Sensor Dois', 'Sensor três', 'Sensor Quatro', 'Sensor Cinco'];
         $contador = 0;
+        $fake = Faker::create("pt_BR");
 
         foreach(\range(1,5) as $index){
             DB::table('sensor')->insert([
-                'nome'=> $nomes[$contador]
+                'nome'=> $nomes[$contador],
+                'contador'=> $fake ->numberBetween(1,99)
             ]);
 
             $contador++;
