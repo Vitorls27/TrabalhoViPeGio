@@ -39,11 +39,9 @@
             <div class="col-3">
                 <label class="form-label">Setor</label><br>
                 <select name="setor_id" class="form-select">
-                    <option value="1">Atendente</option>
-                    <option value="2">Garçom</option>
-                    <option value="3">Estoque</option>
-                    <option value="4">Administração</option>
-                    <option value="5">Cozinha</option>
+                    @foreach ($setores as $item)
+                        <option value="{{ $item->id }}" >{{ $item->nome }}</option>
+                    @endforeach
                 </select>
             </div>
             @php

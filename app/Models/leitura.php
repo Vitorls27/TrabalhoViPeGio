@@ -21,4 +21,12 @@ class leitura extends Model
     public function sensor(){
         return $this->belongsTo(Sensor::class,'sensor_id','id');
     }
+    /*
+    public function setDataLeituraAttribute( $value ) {
+        $this->attributes['data_leitura'] = (new Carbon($value))->format('d/m/Y');
+      }
+
+    protected $casts = [
+        'data_leitura' => 'date:d/m/Y',
+    ];*/
 }

@@ -22,14 +22,14 @@
             <input type="hidden" name="id"
                 value="@if (!empty(old('id'))) {{ old('id') }} @elseif(!empty($leitura->id)) {{ $leitura->id }} @else {{ '' }} @endif" /><br>
             <div class="col-3">
-                <label class="form-label">data da leitura</label><br>
+                <label class="form-label">data da leitura {{ $leitura->data_leitura }}</label><br>
                 <input type="date" class="form-control" name="data_leitura"
-                    value="@if (empty(old('data_leitura'))) {{ old('data_leitura') }} @elseif(!empty($leitura->data_leitura)) {{ $leitura->data_leitura }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('data_leitura'))) {{ old('data_leitura') }} @elseif(!empty($leitura->data_leitura)) {{ $leitura->data_leitura }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">hora da leitura</label><br>
                 <input type="time" class="form-control" name="hora_leitura"
-                    value="@if (empty(old('hora_leitura'))) {{ old('hora_leitura') }} @elseif(!empty($leitura->hora_leitura)) {{ $leitura->hora_leitura }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('hora_leitura'))) {{ old('hora_leitura') }} @elseif(!empty($leitura->hora_leitura)) {{ $leitura->hora_leitura }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">valor do sensor</label><br>

@@ -34,9 +34,9 @@
             <div class="col-3">
                 <label class="form-label">Tipo de Produto</label><br>
                 <select name="tipo_id" class="form-select">
-                    <option value="1">salgado</option>
-                    <option value="2">doce</option>
-                    <option value="3">bebida</option>
+                    @foreach ($tipos as $item)
+                        <option value="{{ $item->id }}" >{{ $item->nome }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-3">
