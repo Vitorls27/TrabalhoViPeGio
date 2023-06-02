@@ -24,8 +24,8 @@ class leitura extends Model
 
     public function getDataLeituraAttribute($value){
         return \Carbon\Carbon::parse($value)->format('d/m/Y');
-    }
+    }/*
     public function setDataLeituraAttribute($value){
         $this->attributes['data_leitura'] = \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
-    }
+    }*/
 }

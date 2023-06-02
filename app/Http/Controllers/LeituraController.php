@@ -36,8 +36,8 @@ class LeituraController extends Controller
                 'mac_id' => 'required',
             ],
             [
-                'data_leitura.required' => 'O data da leitura é obrigatório',
-                'hora_leitura.required' => 'O nome é obrigatório',
+                'data_leitura.required' => 'A data da leitura é obrigatório',
+                'hora_leitura.required' => 'A hora da leitura é obrigatório',
                 'valor_sensor.required' => 'O valor do sensor é obrigatório',
                 'valor_sensor.max' => 'Só é permitido 20 caracteres',
             ]
@@ -101,8 +101,8 @@ class LeituraController extends Controller
                 'mac_id' => 'required',
             ],
             [
-                'data_leitura.required' => 'O data da leitura é obrigatório',
-                'hora_leitura.required' => 'O nome é obrigatório',
+                'data_leitura.required' => 'A data da leitura é obrigatório',
+                'hora_leitura.required' => 'A hora da leitura é obrigatório',
                 'valor_sensor.required' => 'O valor do sensor é obrigatório',
                 'valor_sensor.max' => 'Só é permitido 20 caracteres',
             ]

@@ -25,17 +25,19 @@
             <div class="col-3">
                 <label class="form-label">data da leitura</label><br>
                 <input type="date" class="form-control" name="data_leitura"
-                    value="@if (!empty(old('data_leitura'))) {{old('data_leitura')}} @elseif(!empty($leitura->data_leitura)) {{$leitura->data_leitura}} @else {{ '' }} @endif" /><br>
+                    value= @if (!empty(old($leitura->data_leitura))) {{old($leitura->data_leitura)}} @elseif(!empty($leitura->data_leitura)) {{$leitura->data_leitura}} @else {{ '' }} @endif />
+                    <label>@if (!empty(old($leitura->data_leitura))) {{old($leitura->data_leitura)}} @else {{'Data anterior: '.$leitura->data_leitura}} @endif</label><br><br>
             </div>
             <div class="col-3">
                 <label class="form-label">hora da leitura</label><br>
                 <input type="time" class="form-control" name="hora_leitura"
-                    value="@if (!empty(old('hora_leitura'))) {{ old('hora_leitura') }} @elseif(!empty($leitura->hora_leitura)) {{$leitura->hora_leitura}} @else {{ '' }} @endif" /><br>
+                    value= @if (!empty(old($leitura->hora_leitura))) {{old($leitura->hora_leitura)}} @elseif(!empty($leitura->hora_leitura)) {{$leitura->hora_leitura}} @else {{ '' }} @endif />
+                    <label>@if (!empty(old($leitura->hora_leitura))) {{old($leitura->hora_leitura)}} @else {{'Hora anterior: '.$leitura->hora_leitura}} @endif</label><br><br>
             </div>
             <div class="col-3">
                 <label class="form-label">valor do sensor</label><br>
-                <input type="" class="form-control" name="valor_sensor"
-                    value="@if (!empty(old('valor_sensor'))) {{ old('valor_sensor') }} @elseif(!empty($leitura->valor_sensor)) {{$leitura->valor_sensor}} @else {{ '' }} @endif" /><br>
+                <input type="number" class="form-control" name="valor_sensor"
+                    value= @if (!empty(old($leitura->valor_sensor))) {{ old($leitura->valor_sensor) }} @else {{$leitura->valor_sensor}} @endif /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">Sensor</label><br>
