@@ -21,7 +21,9 @@
                 <i class="fa-solid fa-magnifying-glass"></i> Buscar
             </button>
             <a class="btn btn-success" href="{{ action('App\Http\Controllers\FuncionarioController@create') }}"><i
-                    class="fa-solid fa-plus"></i> Cadastrar</a>
+                class="fa-solid fa-plus"></i> Cadastrar</a>
+            <a class="btn btn-info" href="{{ action('App\Http\Controllers\PDFController@generateFuncionarioPDF') }}"><i
+                class="fa-solid fa-print"></i> Baixar PDF</a>
         </div>
     </div>
 </form>

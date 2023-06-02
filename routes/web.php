@@ -6,6 +6,7 @@ use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\LeituraController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,9 @@ Route::get('/store', function () {
 Route::get('/products', function () {
     return view('products');
 });
+Route::get('generateCardapioPDF', [PDFController::class, 'generateCardapioPDF']);
+Route::get('generateFuncionarioPDF', [PDFController::class, 'generateFuncionarioPDF']);
+
 Route::resource('cardapio', CardapioController::class);
 Route::post('cardapio/search', [CardapioController::class, 'search'])->name(
     'cardapio.search'

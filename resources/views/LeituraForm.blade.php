@@ -8,6 +8,7 @@
             $route = route('leitura.store');
         }
         $leitura->data_leitura = date('d/m/Y', strtotime($leitura->data_leitura));
+        $data_formatada = DateTime::createFromFormat('d/m/Y', $leitura->data_leitura);
     @endphp
 @section('tituloPagina', 'Formulário do Sensor')
 <h1>Formulário do Sensor</h1>
@@ -24,15 +25,13 @@
                 value="@if (!empty(old('id'))) {{ old('id') }} @elseif(!empty($leitura->id)) {{ $leitura->id }} @else {{ '' }} @endif" /><br>
             <div class="col-3">
                 <label class="form-label">data da leitura</label><br>
-                <input type="date" class="form-control" name="data_leitura"
-                    value= @if (!empty(old($leitura->data_leitura))) {{old($leitura->data_leitura)}} @elseif(!empty($leitura->data_leitura)) {{$leitura->data_leitura}} @else {{ '' }} @endif />
-                    <label>@if (!empty(old($leitura->data_leitura))) {{old($leitura->data_leitura)}} @else {{'Data anterior: '.$leitura->data_leitura}} @endif</label><br><br>
+                <input type="date" class="form-control" name="data_leitura" onkeypress="return dateMask(this, event);"
+                    value= <?php echo $data_formatada->format('Y-m-d'); ?> /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">hora da leitura</label><br>
                 <input type="time" class="form-control" name="hora_leitura"
-                    value= @if (!empty(old($leitura->hora_leitura))) {{old($leitura->hora_leitura)}} @elseif(!empty($leitura->hora_leitura)) {{$leitura->hora_leitura}} @else {{ '' }} @endif />
-                    <label>@if (!empty(old($leitura->hora_leitura))) {{old($leitura->hora_leitura)}} @else {{'Hora anterior: '.$leitura->hora_leitura}} @endif</label><br><br>
+                    value= @if (!empty(old($leitura->hora_leitura))) {{old($leitura->hora_leitura)}} @elseif(!empty($leitura->hora_leitura)) {{$leitura->hora_leitura}} @else {{ '' }} @endif /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">valor do sensor</label><br>

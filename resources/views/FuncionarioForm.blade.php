@@ -28,7 +28,7 @@
             </div>
             <div class="col-3">
                 <label class="form-label">Telefone</label><br>
-                <input type="text" class="form-control" name="telefone"
+                <input type="tel" class="form-control" name="telefone"
                     value="@if (!empty(old('telefone'))) {{ old('telefone') }} @elseif(!empty($funcionario->telefone)) {{ $funcionario->telefone }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
@@ -39,7 +39,7 @@
             <div class="col-3">
                 <label class="form-label">Setor</label><br>
                 <select name="setor_id" class="form-select">
-                    @foreach ($setores as $item)
+                    @foreach ($setor as $item)
                         <option value="{{ $item->id }}" >{{ $item->nome }}</option>
                     @endforeach
                 </select>
