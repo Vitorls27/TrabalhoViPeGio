@@ -11,7 +11,7 @@ class LeituraController extends Controller
 {
     function index()
     {
-        $leituras = Leitura::All();
+        $leituras = Leitura::all();
         // dd($leituras);
 
         return view('leituraList')->with(['leituras' => $leituras]);
@@ -22,7 +22,7 @@ class LeituraController extends Controller
         $mac = Mac::orderBy('nome')->get();
         $sensor = Sensor::orderBy('nome')->get();
         //dd($categorias);
-        return view('leituraForm')->with(['mac' => $mac,'sensor' => $sensor]);
+        return view('LeituraForm')->with(['mac' => $mac,'sensor' => $sensor]);
     }
 
     function store(Request $request)
@@ -54,7 +54,7 @@ class LeituraController extends Controller
 
         //dd( $request->nome);
         //passa o vetor com os dados do formulário como parametro para ser salvo
-        leitura::create($dados);
+        Leitura::create($dados);
 
         return \redirect('leitura')->with('success', 'Cadastrado com sucesso!');
     }
@@ -67,7 +67,7 @@ class LeituraController extends Controller
         $sensor = Sensor::orderBy('nome')->get();
         $mac = Mac::orderBy('nome')->get();
 
-        return view('leituraForm')->with([
+        return view('LeituraForm')->with([
             'leitura' => $leitura,
             'sensor' => $sensor,
             'mac' => $mac,
@@ -82,7 +82,7 @@ class LeituraController extends Controller
         $sensor = Sensor::orderBy('nome')->get();
         $mac = Mac::orderBy('nome')->get();
 
-        return view('leituraForm')->with([
+        return view('LeituraForm')->with([
             'leitura' => $leitura,
             'sensor' => $sensor,
             'mac' => $mac,
