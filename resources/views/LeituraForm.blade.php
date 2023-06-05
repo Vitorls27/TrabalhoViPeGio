@@ -27,7 +27,7 @@
             <div class="col-3">
                 <label class="form-label">Data da Leitura </label><br>
                 <input type="date" class="form-control" name="data_leitura"
-                    value=@if (!empty(old('hora_leitura'))) {{date_format($data_formatada, 'Y-m-d')}} @elseif(!empty($leitura->data_leitura)) {{date_format($data_formatada, 'Y-m-d')}} @else {{ '' }} @endif /><br>
+                    value=@if (!empty(old('data_leitura'))) {{old('data_leitura')}} @elseif(!empty($leitura->data_leitura)) {{date_format($data_formatada, 'Y-m-d')}} @else {{ '' }} @endif /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">Hora da Leitura</label><br>
