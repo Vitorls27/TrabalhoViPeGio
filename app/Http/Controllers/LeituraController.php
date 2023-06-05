@@ -136,14 +136,22 @@ class LeituraController extends Controller
 
     function search(Request $request)
     {
-        if ($request->campo) {
-            $leituras = leitura::where(
+        if ($request->campo == 'data_leitura' && !empty($request->valor)) {
+            $leituras = Leitura::where(
+                //dd(date('Y-m-d',strtotime(date('d/m/Y',strtotime($request->valor))))),
                 $request->campo,
+                'like',
+                '%' . date('Y-m-d',strtotime(date('d/m/Y',strtotime($request->valor)))) . '%'
+            )->get();
+        } elseif ($request->campo) {
+            $leituras = Leitura::where(
+                $request->campo,
+                //dd($request->valor),
                 'like',
                 '%' . $request->valor . '%'
             )->get();
         } else {
-            $leituras = leitura::all();
+            $leituras = Leitura::all();
         }
 
         //dd($leituras);

@@ -135,7 +135,7 @@ class EstoqueController extends Controller
             $estoque = Estoque::where(
                 $request->campo,
                 'like',
-                '%' . $request->custo . '%'
+                '%' . $request->valor . '%'
             )->get();
         } else {
             $estoque = Estoque::all();
