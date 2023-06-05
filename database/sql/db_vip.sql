@@ -32,11 +32,17 @@ CREATE TABLE IF NOT EXISTS `cardapio` (
   PRIMARY KEY (`id`),
   KEY `cardapio_tipo_id_foreign` (`tipo_id`),
   CONSTRAINT `cardapio_tipo_id_foreign` FOREIGN KEY (`tipo_id`) REFERENCES `tipo` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela db_aula.cardapio: ~0 rows (aproximadamente)
 INSERT INTO `cardapio` (`id`, `nome`, `valor`, `descriçao`, `imgprod`, `created_at`, `updated_at`, `tipo_id`) VALUES
-	(2, 'café', 4.60, 'o café é bom, tipo muito bom. \r\nVocê tem que provar esse café maravilhoso, \r\numa das melhores coisas que já provei.', '', '2023-05-24 20:25:50', '2023-05-24 21:12:58', 1);
+	(4, 'Café Carioca', 4.00, 'o café é bom, tipo muito bom. \r\nVocê tem que provar esse café maravilhoso, \r\numa das melhores coisas que já provei.', 'imagem/20230604232456.jpg', '2023-06-05 02:24:56', '2023-06-05 02:24:56', 3),
+	(5, 'Capuccino Vip Etiópia', 9.50, 'Café direto da origem. Sabor original. Não tem igual.', 'imagem/20230605004132.jpg', '2023-06-05 03:41:32', '2023-06-05 03:41:32', 3),
+	(6, 'Café Flamengo', 10.00, 'Café que não tem comparação. Pare de perder tempo e compre logo um.', 'imagem/20230605004307.jpg', '2023-06-05 03:43:07', '2023-06-05 03:43:07', 3),
+	(7, 'Café curto sulista extra forte', 7.00, 'Café rápido porém esplendido, com um sabor de levar ao céu.', 'imagem/20230605004441.jpg', '2023-06-05 03:44:41', '2023-06-05 03:44:41', 3),
+	(8, 'Café Mineiro (com Leite)', 6.00, 'Para quem quer relaxar do melhor modo possível. Tenha bons momentos bebendo esse café.', 'imagem/20230605004602.jpg', '2023-06-05 03:46:02', '2023-06-05 03:49:42', 3),
+	(9, 'Pão de queijo mineiro', 5.00, 'Pão de queijo clássico, traz o melhor do sabor e qualidade.', 'imagem/20230605004658.jpg', '2023-06-05 03:46:59', '2023-06-05 03:46:59', 1),
+	(10, 'Croissant doce', 22.90, 'Croissant que pode te levar ao paraíso. O sabor mais doce. Tenha doces momentos saboreando nosso croissant.', 'imagem/20230605004906.jpg', '2023-06-05 03:49:06', '2023-06-05 03:49:06', 2);
 
 -- Copiando estrutura para tabela db_aula.categoria
 CREATE TABLE IF NOT EXISTS `categoria` (
@@ -70,12 +76,13 @@ CREATE TABLE IF NOT EXISTS `estoque` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela db_aula.estoque: ~2 rows (aproximadamente)
 INSERT INTO `estoque` (`id`, `nome`, `peso`, `custo`, `quantidade`, `created_at`, `updated_at`) VALUES
 	(2, 'Café', 7.00, 14.49, 25, '2023-05-24 20:23:34', '2023-05-30 21:07:58'),
-	(3, 'Açúcar', 5.00, 19.99, 20, '2023-05-30 21:05:33', '2023-05-30 21:05:33');
+	(3, 'Açúcar', 5.00, 19.99, 20, '2023-05-30 21:05:33', '2023-05-30 21:05:33'),
+	(4, 'Adoçante Orgânico', 2.00, 14.99, 20, '2023-06-05 03:36:15', '2023-06-05 03:36:27');
 
 -- Copiando estrutura para tabela db_aula.failed_jobs
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
@@ -105,14 +112,13 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   PRIMARY KEY (`id`),
   KEY `funcionario_setor_id_foreign` (`setor_id`),
   CONSTRAINT `funcionario_setor_id_foreign` FOREIGN KEY (`setor_id`) REFERENCES `setor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela db_aula.funcionario: ~4 rows (aproximadamente)
 INSERT INTO `funcionario` (`id`, `nome`, `telefone`, `email`, `imgfun`, `created_at`, `updated_at`, `setor_id`) VALUES
-	(1, 'Ramos', '9869678', 'ramos@gmail.com', 'imagem/20230530162844.jpg', '2023-05-24 21:56:06', '2023-05-30 19:28:44', 1),
+	(1, 'Ramos', '9869678', 'ramos@gmail.com', 'imagem/20230530162844.jpg', '2023-05-24 21:56:06', '2023-06-05 02:06:46', 4),
 	(8, 'Vasco', '752051434223', 'vasco@gmail.com', 'imagem/20230530162913.jpg', '2023-05-24 22:23:21', '2023-05-30 19:29:13', 1),
-	(9, 'Rafael Gomes', '049984443455', 'RafaelG@gmail.com', '', '2023-05-30 19:31:11', '2023-05-30 19:31:11', 4),
-	(10, 'dfwe', '79797080798', 'faf@gmail.com', '', '2023-05-31 04:40:23', '2023-05-31 04:40:47', 1);
+	(11, 'Fernanda Maroni', '(49)98388-4755', 'FernandaM@gmail.com', 'imagem/20230604225704.jpg', '2023-06-05 01:57:04', '2023-06-05 02:06:38', 2);
 
 -- Copiando estrutura para tabela db_aula.leitura
 CREATE TABLE IF NOT EXISTS `leitura` (
@@ -129,12 +135,14 @@ CREATE TABLE IF NOT EXISTS `leitura` (
   KEY `leitura_mac_id_foreign` (`mac_id`),
   CONSTRAINT `leitura_mac_id_foreign` FOREIGN KEY (`mac_id`) REFERENCES `mac` (`id`),
   CONSTRAINT `leitura_sensor_id_foreign` FOREIGN KEY (`sensor_id`) REFERENCES `sensor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela db_aula.leitura: ~2 rows (aproximadamente)
 INSERT INTO `leitura` (`id`, `data_leitura`, `hora_leitura`, `valor_sensor`, `sensor_id`, `mac_id`, `created_at`, `updated_at`) VALUES
-	(1, '2023-05-31', '19:15', 32.00, 25, 1, '2023-05-31 04:44:08', '2023-06-02 01:18:03'),
-	(3, '2023-05-30', '19:05', 53.00, 25, 1, '2023-05-31 04:47:22', '2023-06-02 01:20:20');
+	(1, '2023-05-08', '19:15', 32.00, 25, 1, '2023-05-31 04:44:08', '2023-06-04 21:30:34'),
+	(3, '2023-06-01', '19:05', 53.00, 24, 1, '2023-05-31 04:47:22', '2023-06-04 19:30:01'),
+	(4, '2023-06-07', '15:32', 23.00, 21, 7, '2023-06-04 21:30:51', '2023-06-04 21:30:51'),
+	(5, '2023-05-31', '00:54', 20.00, 22, 1, '2023-06-05 03:51:26', '2023-06-05 03:52:45');
 
 -- Copiando estrutura para tabela db_aula.mac
 CREATE TABLE IF NOT EXISTS `mac` (
@@ -249,18 +257,13 @@ CREATE TABLE IF NOT EXISTS `setor` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.setor: ~10 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.setor: ~0 rows (aproximadamente)
 INSERT INTO `setor` (`id`, `nome`, `created_at`, `updated_at`) VALUES
 	(1, 'Atendente', NULL, NULL),
 	(2, 'Garçom', NULL, NULL),
 	(3, 'Estoque', NULL, NULL),
 	(4, 'Administração', NULL, NULL),
-	(5, 'Cozinha', NULL, NULL),
-	(6, 'Atendente', NULL, NULL),
-	(7, 'Garçom', NULL, NULL),
-	(8, 'Estoque', NULL, NULL),
-	(9, 'Administração', NULL, NULL),
-	(10, 'Cozinha', NULL, NULL);
+	(5, 'Cozinha', NULL, NULL);
 
 -- Copiando estrutura para tabela db_aula.tipo
 CREATE TABLE IF NOT EXISTS `tipo` (
@@ -271,20 +274,11 @@ CREATE TABLE IF NOT EXISTS `tipo` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.tipo: ~12 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.tipo: ~0 rows (aproximadamente)
 INSERT INTO `tipo` (`id`, `nome`, `created_at`, `updated_at`) VALUES
 	(1, 'Salgado', NULL, NULL),
 	(2, 'Doce', NULL, NULL),
-	(3, 'Bebida', NULL, NULL),
-	(4, 'Salgado', NULL, NULL),
-	(5, 'Doce', NULL, NULL),
-	(6, 'Bebida', NULL, NULL),
-	(7, 'Salgado', NULL, NULL),
-	(8, 'Doce', NULL, NULL),
-	(9, 'Bebida', NULL, NULL),
-	(10, 'Salgado', NULL, NULL),
-	(11, 'Doce', NULL, NULL),
-	(12, 'Bebida', NULL, NULL);
+	(3, 'Bebida', NULL, NULL);
 
 -- Copiando estrutura para tabela db_aula.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -302,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Copiando dados para a tabela db_aula.users: ~0 rows (aproximadamente)
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$xutVOFBeE0HLSM1WfAwYSue9tGvyYevqIItgOjfnqd8/4Kwtf0cVu', '6RTpuGDSQPfZgECCLaKD1WN7d4KMARTCootiUIBjnkGHNhPsIaAFGpN8Ubf7', '2023-05-24 20:16:39', '2023-05-24 20:16:39');
+	(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$xutVOFBeE0HLSM1WfAwYSue9tGvyYevqIItgOjfnqd8/4Kwtf0cVu', 'vblHN21u0buG14bYJP6JjgkOvvnSrzO1FvxRlzi4pYBCq6T46wIW8PkTEiND', '2023-05-24 20:16:39', '2023-05-24 20:16:39');
 
 -- Copiando estrutura para tabela db_aula.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -317,12 +311,13 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`id`),
   KEY `usuario_categoria_id_foreign` (`categoria_id`),
   CONSTRAINT `usuario_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela db_aula.usuario: ~2 rows (aproximadamente)
 INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `imagem`, `created_at`, `updated_at`, `categoria_id`) VALUES
-	(1, 'daniel', '213', 'daniel@gmail.com', 'imagem/20230530162622.jpg', '2023-05-24 21:54:26', '2023-05-30 19:26:23', 10),
-	(2, 'roberto', '7393759582', 'roberto@gmail.com', 'imagem/20230530162646.jpg', '2023-05-24 22:19:14', '2023-05-30 19:26:46', 10);
+	(1, 'daniel', '049922552435', 'daniel@gmail.com', 'imagem/20230530162622.jpg', '2023-05-24 21:54:26', '2023-06-05 01:54:55', 10),
+	(2, 'roberto', '7393759582', 'roberto@gmail.com', 'imagem/20230530162646.jpg', '2023-05-24 22:19:14', '2023-05-30 19:26:46', 10),
+	(3, 'Félix Max', '(49)99954-0264', 'FelixM@gmail.com', 'imagem/20230604225407.jpg', '2023-06-05 01:54:07', '2023-06-05 01:54:07', 6);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
