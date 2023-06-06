@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS `cardapio` (
   PRIMARY KEY (`id`),
   KEY `cardapio_tipo_id_foreign` (`tipo_id`),
   CONSTRAINT `cardapio_tipo_id_foreign` FOREIGN KEY (`tipo_id`) REFERENCES `tipo` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.cardapio: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.cardapio: ~7 rows (aproximadamente)
 INSERT INTO `cardapio` (`id`, `nome`, `valor`, `descriçao`, `imgprod`, `created_at`, `updated_at`, `tipo_id`) VALUES
 	(4, 'Café Carioca', 4.00, 'o café é bom, tipo muito bom. \r\nVocê tem que provar esse café maravilhoso, \r\numa das melhores coisas que já provei.', 'imagem/20230604232456.jpg', '2023-06-05 02:24:56', '2023-06-05 02:24:56', 3),
 	(5, 'Capuccino Vip Etiópia', 9.50, 'Café direto da origem. Sabor original. Não tem igual.', 'imagem/20230605004132.jpg', '2023-06-05 03:41:32', '2023-06-05 03:41:32', 3),
@@ -76,9 +76,9 @@ CREATE TABLE IF NOT EXISTS `estoque` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.estoque: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.estoque: ~3 rows (aproximadamente)
 INSERT INTO `estoque` (`id`, `nome`, `peso`, `custo`, `quantidade`, `created_at`, `updated_at`) VALUES
 	(2, 'Café', 7.00, 14.49, 25, '2023-05-24 20:23:34', '2023-05-30 21:07:58'),
 	(3, 'Açúcar', 5.00, 19.99, 20, '2023-05-30 21:05:33', '2023-05-30 21:05:33'),
@@ -112,9 +112,9 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   PRIMARY KEY (`id`),
   KEY `funcionario_setor_id_foreign` (`setor_id`),
   CONSTRAINT `funcionario_setor_id_foreign` FOREIGN KEY (`setor_id`) REFERENCES `setor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.funcionario: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.funcionario: ~3 rows (aproximadamente)
 INSERT INTO `funcionario` (`id`, `nome`, `telefone`, `email`, `imgfun`, `created_at`, `updated_at`, `setor_id`) VALUES
 	(1, 'Ramos', '9869678', 'ramos@gmail.com', 'imagem/20230530162844.jpg', '2023-05-24 21:56:06', '2023-06-05 02:06:46', 4),
 	(8, 'Vasco', '752051434223', 'vasco@gmail.com', 'imagem/20230530162913.jpg', '2023-05-24 22:23:21', '2023-05-30 19:29:13', 1),
@@ -135,14 +135,14 @@ CREATE TABLE IF NOT EXISTS `leitura` (
   KEY `leitura_mac_id_foreign` (`mac_id`),
   CONSTRAINT `leitura_mac_id_foreign` FOREIGN KEY (`mac_id`) REFERENCES `mac` (`id`),
   CONSTRAINT `leitura_sensor_id_foreign` FOREIGN KEY (`sensor_id`) REFERENCES `sensor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.leitura: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.leitura: ~4 rows (aproximadamente)
 INSERT INTO `leitura` (`id`, `data_leitura`, `hora_leitura`, `valor_sensor`, `sensor_id`, `mac_id`, `created_at`, `updated_at`) VALUES
 	(1, '2023-05-08', '19:15', 32.00, 25, 1, '2023-05-31 04:44:08', '2023-06-04 21:30:34'),
 	(3, '2023-06-01', '19:05', 53.00, 24, 1, '2023-05-31 04:47:22', '2023-06-04 19:30:01'),
 	(4, '2023-06-07', '15:32', 23.00, 21, 7, '2023-06-04 21:30:51', '2023-06-04 21:30:51'),
-	(5, '2023-05-31', '00:54', 20.00, 22, 1, '2023-06-05 03:51:26', '2023-06-05 03:52:45');
+	(5, '2024-02-06', '00:54', 20.00, 25, 1, '2023-06-05 03:51:26', '2023-06-05 18:49:44');
 
 -- Copiando estrutura para tabela db_aula.mac
 CREATE TABLE IF NOT EXISTS `mac` (
@@ -257,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `setor` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.setor: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.setor: ~5 rows (aproximadamente)
 INSERT INTO `setor` (`id`, `nome`, `created_at`, `updated_at`) VALUES
 	(1, 'Atendente', NULL, NULL),
 	(2, 'Garçom', NULL, NULL),
@@ -274,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `tipo` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.tipo: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.tipo: ~3 rows (aproximadamente)
 INSERT INTO `tipo` (`id`, `nome`, `created_at`, `updated_at`) VALUES
 	(1, 'Salgado', NULL, NULL),
 	(2, 'Doce', NULL, NULL),
@@ -292,11 +292,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.users: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.users: ~1 rows (aproximadamente)
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$xutVOFBeE0HLSM1WfAwYSue9tGvyYevqIItgOjfnqd8/4Kwtf0cVu', 'vblHN21u0buG14bYJP6JjgkOvvnSrzO1FvxRlzi4pYBCq6T46wIW8PkTEiND', '2023-05-24 20:16:39', '2023-05-24 20:16:39');
+	(3, 'admin', 'admin@admin.com', NULL, '$2y$10$NPrymKRNbARDHg6AkvNYmeWgRW19yog2DLQUu7X1xthCc0lorOURe', NULL, '2023-06-06 05:27:30', '2023-06-06 05:27:30');
 
 -- Copiando estrutura para tabela db_aula.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -311,9 +311,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`id`),
   KEY `usuario_categoria_id_foreign` (`categoria_id`),
   CONSTRAINT `usuario_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela db_aula.usuario: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela db_aula.usuario: ~3 rows (aproximadamente)
 INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `imagem`, `created_at`, `updated_at`, `categoria_id`) VALUES
 	(1, 'daniel', '049922552435', 'daniel@gmail.com', 'imagem/20230530162622.jpg', '2023-05-24 21:54:26', '2023-06-05 01:54:55', 10),
 	(2, 'roberto', '7393759582', 'roberto@gmail.com', 'imagem/20230530162646.jpg', '2023-05-24 22:19:14', '2023-05-30 19:26:46', 10),
