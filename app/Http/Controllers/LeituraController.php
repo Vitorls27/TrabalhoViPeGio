@@ -136,12 +136,14 @@ class LeituraController extends Controller
 
     function search(Request $request)
     {
+        $data = implode('-', array_reverse(explode('/', $request->valor)));
         if ($request->campo == 'data_leitura' && !empty($request->valor)) {
+            //dd($data);
             $leituras = Leitura::where(
                 //dd(date('Y-m-d',strtotime(date('d/m/Y',strtotime($request->valor))))),
                 $request->campo,
                 'like',
-                '%' . date('Y-m-d',strtotime(date('d/m/Y',strtotime($request->valor)))) . '%'
+                '%' . $data . '%'
             )->get();
         } elseif ($request->campo) {
             $leituras = Leitura::where(
@@ -158,3 +160,12 @@ class LeituraController extends Controller
         return view('leituraList')->with(['leituras' => $leituras]);
     }
 }
+
+/*
+15/12/2018 -> 2018-12-15
+
+$data = implode('-', array_reverse(explode('/', "15/12/2018")));
+2018-12-15 -> 15/12/2018
+
+$data = implode('/', array_reverse(explode('-', "2018-12-15")));
+*/
